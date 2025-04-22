@@ -19,28 +19,30 @@ Before adding your own listeners with custom logic for events, it may be helpful
 
 Below is a list of available events with a brief description for each one. You can use these events to listen for and respond to key interactions in the chatbot.
 
-| Name                       | Description                                                        |
-|----------------------------|--------------------------------------------------------------------|
-| RcbChangePathEvent          | Emitted when the chatbot changes its conversation path.           |
-| RcbChunkStreamMessageEvent  | Emitted when a chunk of a streamed message is received.           |
-| RcbDismissToastEvent        | Emitted when a toast message is dismissed.                        |
-| RcbLoadChatHistoryEvent     | Emitted when the chat history is loaded.                          |
-| RcbPostInjectMessageEvent   | Emitted after a message is injected into the chat.                |
-| RcbPreInjectMessageEvent    | Emitted before a message is injected into the chat.               |
-| RcbRemoveMessageEvent       | Emitted when a message is removed from the chat.                  |
-| RcbShowToastEvent           | Emitted when a toast message is displayed.                        |
-| RcbStartStreamMessageEvent  | Emitted when the chatbot starts streaming a message.              |
-| RcbStopStreamMessageEvent   | Emitted when the chatbot stops streaming a message.               |
-| RcbStartSpeakAudioEvent     | Emitted when a message is read out (audio starts to play)         |
-| RcbToggleAudioEvent         | Emitted when the audio is toggled on or off.                      |
-| RcbToggleChatWindowEvent    | Emitted when the chat window is toggled open or closed.           |
-| RcbToggleNotificationsEvent | Emitted when notifications are toggled on or off.                 |
-| RcbToggleVoiceEvent         | Emitted when the voice feature is toggled on or off.              |
-| RcbUserSubmitTextEvent      | Emitted when a user submits text in the chat.                     |
-| RcbUserUploadFileEvent      | Emitted when a user uploads a file.                               |
-| RcbTextAreaChangeValueEvent | Emitted when the text area value is changed.                      |
-| RcbPostLoadChatBotEvent     | Emitted after the chatbot is loaded.                              |
-| RcbPreLoadChatBotEvent      | Emitted before the chatbot is loaded.                             |
+| Name                                | Description                                                       |
+|-------------------------------------|-------------------------------------------------------------------|
+| RcbChangePathEvent                  | Emitted when the chatbot changes its conversation path.           |
+| RcbChunkStreamMessageEvent          | Emitted when a chunk of a streamed message is received.           |
+| RcbDismissToastEvent                | Emitted when a toast message is dismissed.                        |
+| RcbLoadChatHistoryEvent             | Emitted when the chat history is loaded.                          |
+| RcbPostInjectMessageEvent           | Emitted after a message is injected into the chat.                |
+| RcbPreInjectMessageEvent            | Emitted before a message is injected into the chat.               |
+| RcbRemoveMessageEvent               | Emitted when a message is removed from the chat.                  |
+| RcbShowToastEvent                   | Emitted when a toast message is displayed.                        |
+| RcbStartSimulateStreamMessageEvent  | Emitted when the chatbot starts simulating streaming a message.   |
+| RcbStopSimulateStreamMessageEvent   | Emitted when the chatbot finishes simulating streaming a message. |
+| RcbStartStreamMessageEvent          | Emitted when the chatbot starts streaming a message.              |
+| RcbStopStreamMessageEvent           | Emitted when the chatbot stops streaming a message.               |
+| RcbStartSpeakAudioEvent             | Emitted when a message is read out (audio starts to play)         |
+| RcbToggleAudioEvent                 | Emitted when the audio is toggled on or off.                      |
+| RcbToggleChatWindowEvent            | Emitted when the chat window is toggled open or closed.           |
+| RcbToggleNotificationsEvent         | Emitted when notifications are toggled on or off.                 |
+| RcbToggleVoiceEvent                 | Emitted when the voice feature is toggled on or off.              |
+| RcbUserSubmitTextEvent              | Emitted when a user submits text in the chat.                     |
+| RcbUserUploadFileEvent              | Emitted when a user uploads a file.                               |
+| RcbTextAreaChangeValueEvent         | Emitted when the text area value is changed.                      |
+| RcbPostLoadChatBotEvent             | Emitted after the chatbot is loaded.                              |
+| RcbPreLoadChatBotEvent              | Emitted before the chatbot is loaded.                             |
 
 ## Event Details
 
@@ -257,9 +259,6 @@ Emitted before a message is injected into the chat.
 | Name             | Type                 | Description                                                     |
 |------------------|----------------------|-----------------------------------------------------------------|
 | message          | `Message`            | The message being sent into the chat.                           |
-| simStreamChunker | `function` \| `null` | A custom function to parse messages for simulated streaming     |
-
-Note: The `simStreamChunker` function takes in a string and returns an array of strings. By default, this field is null and strings are split per-character. A custom function can be passed in to control how simulated streaming is carried out. For example, in the implementation of the [**HTML Renderer Plugin**](https://www.npmjs.com/package/@rcb-plugins/html-renderer), a custom function is passed in to skip over html tags when simulating message stream.
 
 #### Code Example
 ```jsx
@@ -349,6 +348,82 @@ const MyComponent = () => {
     window.addEventListener("rcb-show-toast", handleShowToast);
     return () => {
       window.removeEventListener("rcb-show-toast", handleShowToast);
+    };
+  }, []);
+
+  return (
+    <ExampleComponent/>
+  );
+};
+```
+
+### RcbStartSimulateStreamMessageEvent
+
+#### Description
+Emitted when the chatbot starts simulating streaming a message.
+
+#### Note
+- Requires `settings.event.rcbStartSimulateStreamMessage` to be set to true.
+- Event is **preventable** with `event.preventDefault()`.
+
+#### Data
+| Name                  | Type                 | Description                                                  |
+|-----------------------|----------------------|------------------------------------------------------------- |
+| message               | `Message`            | The full message that will be used for simulated streaming.  |
+| simulateStreamChunker | `function` \| `null` | A custom function to parse messages for simulated streaming. |
+
+Note: The `simulateStreamChunker` function takes in a string and returns an array of strings. By default, this field is null and strings are split per-character. A custom function can be passed in to control how simulated streaming is carried out. For example, in the implementation of the [**HTML Renderer Plugin**](https://www.npmjs.com/package/@rcb-plugins/html-renderer), a custom function is passed in to skip over html tags when simulating message stream.
+
+#### Code Example
+```jsx
+import { useEffect } from "react";
+import { RcbStartSimulateStreamMessageEvent } from "react-chatbotify";
+
+const MyComponent = () => {
+  useEffect(() => {
+    const handleStartSimulateStreamMessage = (event: RcbStartSimulateStreamMessageEvent) => {
+      // handle the start simulate stream message event
+    };
+
+    window.addEventListener("rcb-start-simulate-stream-message", handleStartSimulateStreamMessage);
+    return () => {
+      window.removeEventListener("rcb-start-simulate-stream-message", handleStartSimulateStreamMessage);
+    };
+  }, []);
+
+  return (
+    <ExampleComponent/>
+  );
+};
+```
+
+### RcbStopSimulateStreamMessageEvent
+
+#### Description
+Emitted when the chatbot finishes simulating streaming a message.
+
+#### Note
+- Requires `settings.event.rcbStopSimulateStreamMessage` to be set to true.
+
+#### Data
+| Name      | Type      | Description                                                     |
+|-----------|-----------|-----------------------------------------------------------------|
+| message   | `Message` | The full message that was used for simulated streaming.         |
+
+#### Code Example
+```jsx
+import { useEffect } from "react";
+import { RcbStopSimulateStreamMessageEvent } from "react-chatbotify";
+
+const MyComponent = () => {
+  useEffect(() => {
+    const handleStopSimulateStreamMessage = (event: RcbStopSimulateStreamMessageEvent) => {
+      // handle the stop simulate stream message event
+    };
+
+    window.addEventListener("rcb-stop-simulate-stream-message", handleStopSimulateStreamMessage);
+    return () => {
+      window.removeEventListener("rcb-stop-simulate-stream-message", handleStopSimulateStreamMessage);
     };
   }, []);
 

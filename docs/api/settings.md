@@ -108,14 +108,14 @@ const DefaultSettings: Settings = {
 		animate: true,
 		showAvatar: false,
 		avatar: userAvatar,
-		simStream: false,
+		simulateStream: false,
 		streamSpeed: 30,
 	},
 	botBubble: {
 		animate: true,
 		showAvatar: false,
 		avatar: botAvatar,
-		simStream: false,
+		simulateStream: false,
 		streamSpeed: 30,
 	},
 	voice: {
@@ -177,6 +177,8 @@ const DefaultSettings: Settings = {
 	event: {
 		rcbPreInjectMessage: false,
 		rcbPostInjectMessage: false,
+		rcbStartSimulateStreamMessage: false,
+		rcbStopSimulateStreamMessage: false,
 		rcbStartStreamMessage: false,
 		rcbChunkStreamMessage: false,
 		rcbStopStreamMessage: false,
@@ -294,8 +296,8 @@ Properties here handle the chat bubble for messages sent by the bot.
 | animate                    | `boolean`                         | true                                        | Specifies whether the bot chat bubbles should be animated.                                                        |
 | showAvatar                 | `boolean`                         | false                                       | Specifies whether the avatar should be displayed for bot chat bubbles.                                                         |
 | avatar                | `string`                          | -                                            | Image import or URL for the avatar to be displayed for bot chat bubbles.                                                             |                                                                              |
-| simStream                 | `boolean`                         | false                                       | Specifies whether to simulate text messages from the bot as a stream.                                                         |
-| streamSpeed                | `number`                          | 30                                            | Specifies the interval in milliseconds between streaming each character (ignored if `simStream` is false).                                                             |                                                                              |
+| simulateStream             | `boolean`                         | false                                       | Specifies whether to simulate text messages from the bot as a stream.                                                         |
+| streamSpeed                | `number`                          | 30                                            | Specifies the interval in milliseconds between streaming each character (ignored if `simulateStream` is false).                                                             |                                                                              |
 
 ### chatButton
 
@@ -501,8 +503,8 @@ Properties here handle the chat bubble for messages sent by the user.
 | animate                    | `boolean`                         | true                                        | Specifies whether the user chat bubbles should be animated.                                                        |
 | showAvatar                 | `boolean`                         | false                                       | Specifies whether the avatar should be displayed for user chat bubbles.                                                        |
 | avatar                | `string`                          | -                                            | Image import or URL for the avatar to be displayed for user chat bubbles.                                                            |
-| simStream                 | `boolean`                         | false                                       | Specifies whether to simulate text messages from the user as a stream.                                                         |
-| streamSpeed                | `number`                          | 30                                            | Specifies the interval in milliseconds between streaming each character (ignored if `simStream` is false).                                                             |      
+| simulateStream             | `boolean`                         | false                                       | Specifies whether to simulate text messages from the user as a stream.                                                         |
+| streamSpeed                | `number`                          | 30                                            | Specifies the interval in milliseconds between streaming each character (ignored if `simulateStream` is false).                                                             |      
 
 ### voice
 

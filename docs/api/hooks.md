@@ -109,10 +109,11 @@ Below is a detailed description of each hook and the functions they expose.
 The `useAudio` hook allows you to track and manage the chatbot's audio functionality.
 
 #### Return Values
-| Name           | Type       | Description                                            |
-| -------------- | ---------- | ------------------------------------------------------ |
-| audioToggledOn | `boolean ` | Indicates if the chatbot audio is currently on or off. |
-| toggleAudio    | `async function` | Toggles the chatbot audio on or off.                   |
+| Name           | Type             | Description                                                 |
+| -------------- | ---------------- | ----------------------------------------------------------- |
+| audioToggledOn | `boolean `       | Indicates if the chatbot audio is currently on or off.      |
+| toggleAudio    | `async function` | Toggles the chatbot audio on or off.                        |
+| speakAudio     | `async function` | Speaks out the given text using the chatbot audio settings. |
 
 #### Code Example
 ```jsx

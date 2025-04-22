@@ -28,7 +28,7 @@ const FloatingChatBot = () => {
 		voice: {disabled: false},
 		audio: {disabled: false},
 		botBubble: {
-			simStream: true
+			simulateStream: true
 		},
 		chatHistory: {
 			storageKey: "floating_chatbot"

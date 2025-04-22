@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Simulated Stream
 
-The following is an example of a bot simulating stream messages. In the era of LLMs, streaming messages have become commonplace and while real-time streaming brings value in terms of speed of data transfer, simulating streams can also be aesthetically pleasing. Recognizing that need, the library comes built in with the `simStream` option to simulate streaming messages. If you wish to integrate with real-time streaming, [**look here**](/docs/examples/real_time_stream) instead.
+The following is an example of a bot simulating stream messages. In the era of LLMs, streaming messages have become commonplace and while real-time streaming brings value in terms of speed of data transfer, simulating streams can also be aesthetically pleasing. Recognizing that need, the library comes built in with the `simulateStream` option to simulate streaming messages. If you wish to integrate with real-time streaming, [**look here**](/docs/examples/real_time_stream) instead.
 
 ```jsx live noInline title=MyChatBot.js
 const MyChatBot = () => {
@@ -18,14 +18,14 @@ const MyChatBot = () => {
 		},
 		thank: {
 			message: async (params) => {
-				await params.injectMessage("I am an injected message!");
+				await params.simulateStreamMessage("I am a simulated stream message as well!");
 				return "I am a return message!";
 			},
 			path: "start"
 		}
 	}
 	return (
-		<ChatBot settings={{general: {embedded: true}, chatHistory: {storageKey: "example_simulation_stream"}, botBubble: {simStream: true}}} flow={flow}/>
+		<ChatBot settings={{general: {embedded: true}, chatHistory: {storageKey: "example_simulation_stream"}, botBubble: {simulateStream: true}}} flow={flow}/>
 	);
 };
 

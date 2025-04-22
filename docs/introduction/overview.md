@@ -35,7 +35,7 @@ import Loading from '@theme/Loading';
         const settings = {
           general: {embedded: true},
           chatHistory: {storageKey: "introduction_overview"},
-          botBubble: {simStream: true}
+          botBubble: {simulateStream: true}
         }
 
         return <ChatBot flow={flow} settings={settings}/>

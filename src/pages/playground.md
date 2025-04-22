@@ -7,7 +7,7 @@ const MyChatBot = () => {
     const settings = {
         general: {embedded: true},
         chatHistory: {storageKey: "playground"},
-        botBubble: {simStream: true}
+        botBubble: {simulateStream: true}
     }
     const flow={
         start: {

@@ -43,7 +43,7 @@ const LandingPageChatBot = () => {
 		},
 		botBubble: {
 			showAvatar: true,
-			simStream: true
+			simulateStream: true
 		}
 	}
 

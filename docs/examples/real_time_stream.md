@@ -88,7 +88,7 @@ const MyChatBot = () => {
 		}
 	}
 	return (
-		<ChatBot settings={{general: {embedded: true}, chatHistory: {storageKey: "example_real_time_stream"}, botBubble: {simStream: true}}} flow={flow}/>
+		<ChatBot settings={{general: {embedded: true}, chatHistory: {storageKey: "example_real_time_stream"}, botBubble: {simulateStream: true}}} flow={flow}/>
 	);
 };
 

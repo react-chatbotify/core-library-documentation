@@ -20,8 +20,9 @@ The following table provides details about the parameters available for attribut
 | prevPath        | `string`            | All Attributes    | Represents the previous path in the chat (can be null if no previous path exists).                                                 |
 | goToPath        | `async function`          | All Attributes    | A utility function for navigating to another block.                                                                                |
 | injectMessage   | `async function`    | All Attributes    | A utility function to inject a message into the chat.   |
-| streamMessage   | `async function`    | All Attributes    | Streams a message into the chat. You can refer to the [**Real-Time Streaming**](/docs/examples/real_time_stream) example.          |
-| endStreamMessage   | `async function`    | All Attributes    | Ends an existing message stream. You can refer to the [**Real-Time Streaming**](/docs/examples/real_time_stream) example.          |
+| simulateStreamMessage   | `async function`    | All Attributes    | Simulates streaming a message into the chat. You can refer to the [**Simulated Stream**](/docs/examples/simulated_stream) example.          |
+| streamMessage   | `async function`    | All Attributes    | Streams a message into the chat. You can refer to the [**Real-Time Stream**](/docs/examples/real_time_stream) example.          |
+| endStreamMessage   | `async function`    | All Attributes    | Ends an existing message stream. You can refer to the [**Real-Time Stream**](/docs/examples/real_time_stream) example.          |
 | removeMessage   | `async function`    | All Attributes    | Removes a message from the chat by message id.          |
 | setTextAreaValue| `async function`          | All Attributes    | Sets a value directly within the text area.                                                                                        |
 | showToast       | `async function`          | All Attributes    | Shows a toast that is dismissed after a duration or on user click.                                                                                                          |
@@ -135,6 +136,30 @@ start: {
 }
 ```
 
+### simulateStreamMessage
+
+#### Description
+Simulates streaming a message into the chat. This works by taking the entire text string and splitting it up to insert into the chat bubbble. For a detailed example on how to use this parameter, refer to the [**simulated stream**](/docs/examples/simulated_stream) example.
+
+#### Type
+`async function`
+
+#### Parameters
+- `content` (required): a `string` value containing the text to simulate stream for.
+- `sender` (optional): a `string` value representing the sender of the message (`user` or `bot`). Defaults to `bot`.
+- `simulateStreamChunker` (optional): a `function` containing logic for chunking text content for streaming.
+
+#### Code Example
+```jsx
+start: {
+  message: (params) => {
+    // take for example the text below is streamed in character by character
+    const textToStream = "I'm just an example text"
+    await params.simulateStreamMessage(textToStream);
+  }
+}
+```
+
 ### streamMessage
 
 #### Description
@@ -153,9 +178,9 @@ start: {
   message: (params) => {
     // take for example the text below is streamed in character by character
     const textToStream = "I'm just an example text"
-    for (let i = 0; i < text.length; i++) {
+    for (let i = 0; i < textToStream.length; i++) {
         // this call replaces the last message sent by the bot with the new content
-        await params.streamMessage(text.slice(0, i + 1));
+        await params.streamMessage(textToStream.slice(0, i + 1));
     }
     // to end the stream once we're done streaming
     await params.endStreamMessage();
@@ -180,9 +205,9 @@ start: {
   message: (params) => {
     // take for example the text below is streamed in character by character
     const textToStream = "I'm just an example text"
-    for (let i = 0; i < text.length; i++) {
+    for (let i = 0; i < textToStream.length; i++) {
         // this call replaces the last message sent by the bot with the new content
-        await params.streamMessage(text.slice(0, i + 1));
+        await params.streamMessage(textToStream.slice(0, i + 1));
     }
     // to end the stream once we're done streaming
     await params.endStreamMessage();
