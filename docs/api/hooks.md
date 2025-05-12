@@ -184,13 +184,6 @@ const MyNestedComponent = () => {
 The `useChatWindow` hook allows you to track and manage the chatbot's window state.
 
 #### Return Values
-| Name                | Type       | Description                                              |
-| ------------------- | ---------- | -------------------------------------------------------- |
-| isChatWindowOpen    | `boolean`  | Indicates if the chat window is currently open or close. |
-| toggleChatWindow    | `async function` | Toggles the chat window open or close.             |
-| toggleIsBotTyping   | `async function` | Toggles the bot typing indicator.                  |
-| scrollToBottom      | `function`       | Scrolls to the bottom of the chat window.          |
-
 | Name                | Type             | Parameter | Description                                              |
 |---------------------|------------------|-----------|----------------------------------------------------------|
 | isChatWindowOpen    | `boolean`        | -         | Indicates if the chat window is currently open or close. |

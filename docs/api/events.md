@@ -43,6 +43,8 @@ Below is a list of available events with a brief description for each one. You c
 | RcbTextAreaChangeValueEvent         | Emitted when the text area value is changed.                      |
 | RcbPostLoadChatBotEvent             | Emitted after the chatbot is loaded.                              |
 | RcbPreLoadChatBotEvent              | Emitted before the chatbot is loaded.                             |
+| RcbPostProcessBlockEvent            | Emitted before post-processing a block.                           |
+| RcbPreProcessBlockEvent             | Emitted before pre-processing a block.                            |
 
 ## Event Details
 
@@ -880,6 +882,78 @@ const MyComponent = () => {
     window.addEventListener("rcb-pre-load-chatbot", handlePreLoadChatBot);
     return () => {
       window.removeEventListener("rcb-pre-load-chatbot", handlePreLoadChatBot);
+    };
+  }, []);
+
+  return (
+    <ExampleComponent/>
+  );
+};
+```
+
+### RcbPostProcessBlockEvent
+
+#### Description
+Emitted before post-processing a block.
+
+#### Note
+- Requires `settings.event.rcbPostProcessBlock` to be set to true.
+
+#### Data
+| Name      | Type                    | Description                                                     |
+|-----------|-------------------------|-----------------------------------------------------------------|
+| block     | `Block`                 | The block that is to be post-processed.                         |
+
+#### Code Example
+```jsx
+import { useEffect } from "react";
+import { RcbPostProcessBlockEvent } from "react-chatbotify";
+
+const MyComponent = () => {
+  useEffect(() => {
+    const handlePostProcessBlock = (event: RcbPostProcessBlockEvent) => {
+      // handle the post-process block event
+    };
+
+    window.addEventListener("rcb-post-process-block", handlePostProcessBlock);
+    return () => {
+      window.removeEventListener("rcb-post-process-block", handlePostProcessBlock);
+    };
+  }, []);
+
+  return (
+    <ExampleComponent/>
+  );
+};
+```
+
+### RcbPreProcessBlockEvent
+
+#### Description
+Emitted before pre-processing a block.
+
+#### Note
+- Requires `settings.event.rcbPreProcessBlock` to be set to true.
+
+#### Data
+| Name      | Type                    | Description                                                     |
+|-----------|-------------------------|-----------------------------------------------------------------|
+| block     | `Block`                 | The block that is to be pre-processed.                          |
+
+#### Code Example
+```jsx
+import { useEffect } from "react";
+import { RcbPreProcessBlockEvent } from "react-chatbotify";
+
+const MyComponent = () => {
+  useEffect(() => {
+    const handlePreProcessBlock = (event: RcbPreProcessBlockEvent) => {
+      // handle the pre-process block event
+    };
+
+    window.addEventListener("rcb-pre-process-block", handlePreProcessBlock);
+    return () => {
+      window.removeEventListener("rcb-pre-process-block", handlePreProcessBlock);
     };
   }, []);
 
