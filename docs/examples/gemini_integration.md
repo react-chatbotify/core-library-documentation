@@ -50,9 +50,9 @@ const MyChatBot = () => {
 				return "gemini";
 			},
 		},
-        gemini: {
+		gemini: {
 			llmConnector: {
-                // provider configuration guide:
+				// provider configuration guide:
 				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/Gemini.md
 				provider: new GeminiProvider({
 					mode: 'direct',
