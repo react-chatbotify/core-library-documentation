@@ -7,6 +7,8 @@ let ChatBot = null;
 let InputValidator = null;
 let MarkdownRenderer = null;
 let HtmlRenderer = null;
+let LlmConnector = null;
+let llmConnector = {};
 let reactChatbotify = {};
 
 if (ExecutionEnvironment.canUseDOM) {
@@ -24,6 +26,12 @@ if (ExecutionEnvironment.canUseDOM) {
 
 	// imports rcb plugin - html renderer
 	HtmlRenderer = require("@rcb-plugins/html-renderer");
+
+	// imports rcb plugin - llm connector
+	const llmConnectorModule = require("@rcb-plugins/llm-connector");
+	LlmConnector = llmConnectorModule.default;
+	llmConnector = {...llmConnectorModule};
+	delete llmConnector.default;
 }
 
 const ReactLiveScope = {
@@ -33,6 +41,8 @@ const ReactLiveScope = {
 	InputValidator,
 	MarkdownRenderer,
 	HtmlRenderer,
+	LlmConnector,
+	...llmConnector,
 	GoogleGenerativeAI,
 	OpenAI,
 };

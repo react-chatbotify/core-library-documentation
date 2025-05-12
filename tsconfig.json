@@ -3,6 +3,14 @@
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react"
-  }
+    "jsx": "react",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/@wllama/wllama/**/*"
+  ]
 }

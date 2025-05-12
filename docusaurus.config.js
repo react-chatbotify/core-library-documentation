@@ -7,6 +7,32 @@ const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  // Extend the Webpack configuration
+  plugins: [
+    function myWebpackPlugin() {
+      return {
+        name: 'custom-webpack-plugin',
+        configureWebpack(config, isServer) {
+          return {
+            module: {
+              rules: [
+                {
+                  test: /\.tsx?$/, // Match TypeScript files
+                  use: {
+                    loader: require.resolve('babel-loader'),
+                    options: {
+                      presets: [require.resolve('@babel/preset-typescript')],
+                    },
+                  },
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
+  ],
+
   title: 'React ChatBotify',
   tagline: 'A modern React library for creating flexible and extensible chatbots.',
   favicon: 'img/favicon.ico',

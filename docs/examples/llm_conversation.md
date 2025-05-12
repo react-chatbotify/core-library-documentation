@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 8
 title: LLM Conversation
 description: llm conversation chatbot example
 keywords: [react, chat, chatbot, chatbotify]
@@ -7,69 +7,100 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # LLM Conversation
 
-The following is an example showing how to use React ChatBotify to front conversations with LLMs (demonstrated using OpenAI/ChatGPT). If you wish to try out this example, you will have to obtain and provide an [OpenAI API key](https://platform.openai.com/docs/introduction) (note that OpenAI charges for API key use). Alternatively, you may refer to the [**real-time stream**](/docs/examples/real_time_stream) example which uses [**Google Gemini**](https://ai.google.dev/) that comes with free API keys.
+The following is an example showing how to integrate in-browser models (e.g. via [**WebLlm**](https://webllm.mlc.ai/)/[**Wllama**](https://www.npmjs.com/package/@wllama/wllama)) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example also taps on the [**WebLlmProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/WebLlm.md) and [**WllamaProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/Wllama.md), both of which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
+
+:::tip
+
+The plugin also comes with other default providers, which you can try out in the [**OpenAI Integration Example**](/docs/examples/openai_integration.md) and [**Gemini Integration Example**](/docs/examples/gemini_integration.md).
+
+:::
+
+:::tip
+
+If you expect your LLM responses to contain markdown, consider using the [**Markdown Renderer Plugin**](https://www.npmjs.com/package/@rcb-plugins/markdown-renderer) as well!
+
+:::
 
 :::caution
 
-This is for testing purposes only, **do not** embed your API keys on your website in production. You may refer to [**this article**](https://tjtanjin.medium.com/how-to-build-and-integrate-a-react-chatbot-with-llms-a-react-chatbotify-guide-part-4-b40cd59fd6e6) for more details.
+Running models in the browser can be sluggish (especially if a large model is chosen). In production, you should pick a reasonably sized model or look to proxy your request to a backend. A lightweight demo project for an LLM proxy can be found [**here**](https://github.com/tjtanjin/llm-proxy). You may also refer to [**this article**](https://tjtanjin.medium.com/how-to-build-and-integrate-a-react-chatbot-with-llms-a-react-chatbotify-guide-part-4-b40cd59fd6e6) for more details.
 
 :::
 
 ```jsx live noInline title=MyChatBot.js
 const MyChatBot = () => {
-	let apiKey = null;
-	let modelType = "gpt-3.5-turbo";
-	let hasError = false;
+	// initialize the plugin
+	const plugins = [LlmConnector()];
 
-	// example openai conversation
-	// you can replace with other LLMs such as Google Gemini
-	const call_openai = async (params) => {
-		try {
-			const openai = new OpenAI({
-				apiKey: apiKey,
-				dangerouslyAllowBrowser: true // required for testing on browser side, not recommended
-			});
-
-			// for streaming responses in parts (real-time), refer to real-time stream example
-			const chatCompletion = await openai.chat.completions.create({
-				// conversation history is not shown in this example as message length is kept to 1
-				messages: [{ role: 'user', content: params.userInput }],
-				model: modelType,
-			});
-
-			await params.injectMessage(chatCompletion.choices[0].message.content);
-		} catch (error) {
-			await params.injectMessage("Unable to load model, is your API Key valid?");
-			hasError = true;
+	// checks user message stop condition to end llm conversation
+	const onUserMessageCheck = async (message: Message) => {
+		if (
+			typeof message.content === 'string' &&
+			message.content.toUpperCase() === 'RESTART'
+		) {
+			return 'start';
 		}
+	};
+
+	// checks key down stop condition to end llm conversation
+	const onKeyDownCheck = async (event: KeyboardEvent) => {
+		if (event.key === 'Escape') {
+			return 'start';
+		}
+		return null;
 	}
-	const flow={
+
+	// example flow for testing
+	const flow: Flow = {
 		start: {
-			message: "Enter your OpenAI api key and start asking away!",
-			path: "api_key",
-			isSensitive: true
-		},
-		api_key: {
-			message: (params) => {
-				apiKey = params.userInput.trim();
-				return "Ask me anything!";
+			message: "Hello, pick a model runtime to get started!",
+			options: ["WebLlm", "Wllama"],
+			chatDisabled: true,
+			path: async (params) => {
+				await params.simulateStreamMessage("Type 'RESTART' or hit 'ESC` to pick another runtime!");
+				await params.simulateStreamMessage("Ask away!");
+				return params.userInput.toLowerCase();
 			},
-			path: "loop",
 		},
-		loop: {
-			message: async (params) => {
-				await call_openai(params);
+		webllm: {
+			llmConnector: {
+				// provider configuration guide:
+				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/WebLlm.md
+				provider: new WebLlmProvider({
+					model: 'Qwen2-0.5B-Instruct-q4f16_1-MLC',
+				}),
+				outputType: 'character',
+				stopConditions: {
+					onUserMessage: onUserMessageCheck,
+					onKeyDown: onKeyDownCheck,
+				},
 			},
-			path: () => {
-				if (hasError) {
-					return "start"
-				}
-				return "loop"
-			}
-		}
-	}
+		},
+		wllama: {
+			llmConnector: {
+				// provider configuration guide:
+				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/Wllama.md
+				provider: new WllamaProvider({
+					modelUrl: 'https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF/resolve/main/smollm2-360m-instruct-q8_0.gguf',
+					loadModelConfig: {
+						n_ctx: 8192,
+					},
+				}),
+				outputType: 'character',
+				stopConditions: {
+					onUserMessage: onUserMessageCheck,
+					onKeyDown: onKeyDownCheck,
+				},
+			},
+		},
+	};
+
 	return (
-		<ChatBot settings={{general: {embedded: true}, chatHistory: {storageKey: "example_llm_conversation"}}} flow={flow}/>
+		<ChatBot
+			settings={{general: {embedded: true}, chatHistory: {storageKey: "example_openai_integration"}}}
+			plugins={plugins}
+			flow={flow}
+		></ChatBot>
 	);
 };
 

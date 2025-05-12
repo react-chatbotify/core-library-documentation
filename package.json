@@ -24,6 +24,7 @@
     "@mdx-js/react": "^3.0.1",
     "@rcb-plugins/html-renderer": "^0.1.0",
     "@rcb-plugins/input-validator": "^0.2.0",
+    "@rcb-plugins/llm-connector": "^0.1.1",
     "@rcb-plugins/markdown-renderer": "^0.1.1",
     "clsx": "^1.2.1",
     "openai": "^4.47.1",
@@ -41,7 +42,8 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
-    "typescript": "^5.3.3"
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3"
   },
   "browserslist": {
     "production": [

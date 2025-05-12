@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 title: OpenAI Integration
 description: openai integration chatbot example
 keywords: [react, chat, chatbot, chatbotify]
@@ -7,11 +7,17 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # OpenAI Integration
 
-The following is an example showing how to integrate OpenAI into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
+The following is an example showing how to integrate [**OpenAI**](https://platform.openai.com/) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example also taps on the [**OpenaiProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/OpenAI.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
 
 :::tip
 
 The plugin also comes with other default providers, which you can try out in the [**LLM Conversation Example**](/docs/examples/llm_conversation.md) and [**Gemini Integration Example**](/docs/examples/gemini_integration.md).
+
+:::
+
+:::tip
+
+If you expect your LLM responses to contain markdown, consider using the [**Markdown Renderer Plugin**](https://www.npmjs.com/package/@rcb-plugins/markdown-renderer) as well!
 
 :::
 
@@ -23,59 +29,48 @@ This example uses 'direct' mode for demonstration purposes which exposes API key
 
 ```jsx live noInline title=MyChatBot.js
 const MyChatBot = () => {
-	let apiKey = null;
-	let modelType = "gpt-3.5-turbo";
-	let hasError = false;
+	// openai api key, required since we're using 'direct' mode for testing
+	let apiKey = "";
 
-	// example openai conversation
-	// you can replace with other LLMs such as Google Gemini
-	const call_openai = async (params) => {
-		try {
-			const openai = new OpenAI({
-				apiKey: apiKey,
-				dangerouslyAllowBrowser: true // required for testing on browser side, not recommended
-			});
+	// initialize the plugin
+	const plugins = [LlmConnector()];
 
-			// for streaming responses in parts (real-time), refer to real-time stream example
-			const chatCompletion = await openai.chat.completions.create({
-				// conversation history is not shown in this example as message length is kept to 1
-				messages: [{ role: 'user', content: params.userInput }],
-				model: modelType,
-			});
-
-			await params.injectMessage(chatCompletion.choices[0].message.content);
-		} catch (error) {
-			await params.injectMessage("Unable to load model, is your API Key valid?");
-			hasError = true;
-		}
-	}
-	const flow={
+	// example flow for testing
+	const flow: Flow = {
 		start: {
-			message: "Enter your OpenAI api key and start asking away!",
-			path: "api_key",
-			isSensitive: true
-		},
-		api_key: {
-			message: (params) => {
-				apiKey = params.userInput.trim();
-				return "Ask me anything!";
-			},
-			path: "loop",
-		},
-		loop: {
-			message: async (params) => {
-				await call_openai(params);
-			},
-			path: () => {
-				if (hasError) {
-					return "start"
+			message: "Hello! Make sure you've set your API key before getting started!",
+			options: ["I am ready!"],
+			chatDisabled: true,
+			path: async (params) => {
+				if (!apiKey) {
+					await params.simulateStreamMessage("You have not set your API key!");
+					return "start";
 				}
-				return "loop"
-			}
-		}
-	}
+				await params.simulateStreamMessage("Ask away!");
+				return "openai";
+			},
+		},
+		openai: {
+			llmConnector: {
+				// provider configuration guide:
+				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/OpenAI.md
+				provider: new OpenaiProvider({
+					mode: 'direct',
+					model: 'gpt-4.1-nano',
+					responseFormat: 'stream',
+					apiKey: apiKey,
+				}),
+				outputType: 'character',
+			},
+		},
+	};
+
 	return (
-		<ChatBot settings={{general: {embedded: true}, chatHistory: {storageKey: "example_llm_conversation"}}} flow={flow}/>
+		<ChatBot
+			settings={{general: {embedded: true}, chatHistory: {storageKey: "example_openai_integration"}}}
+			plugins={plugins}
+			flow={flow}
+		></ChatBot>
 	);
 };
 
