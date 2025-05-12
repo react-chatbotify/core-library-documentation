@@ -58,7 +58,7 @@ const MyChatBot = () => {
 					mode: 'direct',
 					model: 'gemini-1.5-flash',
 					responseFormat: 'stream',
-					apiKey: geminiApiKey,
+					apiKey: apiKey,
 				}),
 				outputType: 'character',
 			},
