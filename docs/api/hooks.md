@@ -109,11 +109,12 @@ Below is a detailed description of each hook and the functions they expose.
 The `useAudio` hook allows you to track and manage the chatbot's audio functionality.
 
 #### Return Values
-| Name           | Type             | Description                                                 |
-| -------------- | ---------------- | ----------------------------------------------------------- |
-| audioToggledOn | `boolean `       | Indicates if the chatbot audio is currently on or off.      |
-| toggleAudio    | `async function` | Toggles the chatbot audio on or off.                        |
-| speakAudio     | `async function` | Speaks out the given text using the chatbot audio settings. |
+| Name           | Type             | Parameter | Description                                                 |
+|----------------|------------------|-----------|-------------------------------------------------------------|
+| audioToggledOn | `boolean`        | -         | Indicates if the chatbot audio is currently on or off.      |
+| toggleAudio    | `async function` | **active (optional)** - `boolean` indicating desired end state | Toggles the chatbot audio on or off.                        |
+| speakAudio     | `async function` | **text (required)** - `string` representing text to speak out | Speaks out the given text using the chatbot audio settings. |
+
 
 #### Code Example
 ```jsx
@@ -134,9 +135,9 @@ const MyNestedComponent = () => {
 The `useBotId` hook allows you to retrieve the bot id (mainly for plugin developers).
 
 #### Return Values
-| Name           | Type        | Description                                            |
-| -------------- | ----------- | ------------------------------------------------------ |
-| getBotId       | `function ` | Retrieves the bot id.                                  |
+| Name           | Type        | Parameter | Description                                            |
+| -------------- | ----------- | --------  | ------------------------------------------------------ |
+| getBotId       | `function ` | -         | Retrieves the bot id.                                  |
 
 #### Code Example
 ```jsx
@@ -157,12 +158,12 @@ const MyNestedComponent = () => {
 The `useChatHistory` hook allows you to show, retrieve and set chat history messages.
 
 #### Return Values
-| Name                 | Type       | Description                                                   |
-| -------------------- | ---------- | ------------------------------------------------------------- |
-| showChatHistory      | `function` | Shows the chat history messages on the chatbot.               |
-| getHistoryMessages   | `function` | Retrieves the chat history messages.                          |
-| setHistoryMessages   | `function` | Sets the chat history messages (note that this is permanent). |
-| hasChatHistoryLoaded | `boolean`  | Boolean indicating if chat history has been loaded.           |
+| Name                 | Type       | Parameter | Description                                                   |
+| -------------------- | ---------- | --------- | ------------------------------------------------------------- |
+| showChatHistory      | `function` | -         | Shows the chat history messages on the chatbot.               |
+| getHistoryMessages   | `function` | -         | Retrieves the chat history messages.                          |
+| setHistoryMessages   | `function` | **messages (required)** - `Message[]` to set history with | Sets the chat history messages (note that this is permanent). |
+| hasChatHistoryLoaded | `boolean`  | -         | Boolean indicating if chat history has been loaded.           |
 
 #### Code Example
 ```jsx
@@ -186,7 +187,17 @@ The `useChatWindow` hook allows you to track and manage the chatbot's window sta
 | Name                | Type       | Description                                              |
 | ------------------- | ---------- | -------------------------------------------------------- |
 | isChatWindowOpen    | `boolean`  | Indicates if the chat window is currently open or close. |
-| toggleChatWindow    | `async function` | Toggles the chat window open or close.                   |
+| toggleChatWindow    | `async function` | Toggles the chat window open or close.             |
+| toggleIsBotTyping   | `async function` | Toggles the bot typing indicator.                  |
+| scrollToBottom      | `function`       | Scrolls to the bottom of the chat window.          |
+
+| Name                | Type             | Parameter | Description                                              |
+|---------------------|------------------|-----------|----------------------------------------------------------|
+| isChatWindowOpen    | `boolean`        | -         | Indicates if the chat window is currently open or close. |
+| toggleChatWindow    | `async function` | **active (optional)** - `boolean` indicating desired end state | Toggles the chat window open or close.                   |
+| toggleIsBotTyping   | `async function` | **active (optional)** - `boolean` indicating desired end state | Toggles the bot typing indicator.                        |
+| scrollToBottom      | `function`       | **duration (optional)**: `number` representing duration in milliseconds to scroll, defaults to 0 | Scrolls to the bottom of the chat window.                |
+
 
 #### Code Example
 ```jsx
@@ -207,9 +218,9 @@ const MyNestedComponent = () => {
 The `useFirstInteraction` hook allows you to track if a page has been interacted with.
 
 #### Return Values
-| Name                | Type       | Description                                              |
-| ------------------- | ---------- | -------------------------------------------------------- |
-| hasInteractedPage   | `boolean`  | Indicates if the page has been interacted with.          |
+| Name                | Type       | Parameter | Description                                              |
+| ------------------- | ---------- | --------- | -------------------------------------------------------- |
+| hasInteractedPage   | `boolean`  | -         | Indicates if the page has been interacted with.          |
 
 #### Code Example
 ```jsx
@@ -235,11 +246,11 @@ const MyNestedComponent = () => {
 The `useFlow` hook allows you to get a flow, restart a flow and track if a flow has started.
 
 #### Return Values
-| Name                | Type       | Description                                              |
-| ------------------- | ---------- | -------------------------------------------------------- |
-| hasFlowStarted      | `boolean`  | Indicates if the chatbot flow has started.               |
-| getFlow             | `function` | Retrieves the chatbot flow.                              |
-| restartFlow         | `function` | Restarts the chatbot flow.                               |
+| Name                | Type       | Parameter | Description                                              |
+| ------------------- | ---------- | --------- | -------------------------------------------------------- |
+| hasFlowStarted      | `boolean`  | -         | Indicates if the chatbot flow has started.               |
+| getFlow             | `function` | -         | Retrieves the chatbot flow.                              |
+| restartFlow         | `function` | -         | Restarts the chatbot flow.                               |
 
 #### Code Example
 ```jsx
@@ -265,14 +276,15 @@ const MyNestedComponent = () => {
 The `useMessages` hook allows you to track and manage the chatbot's messages.
 
 #### Return Values
-| Name                | Type        | Description                                              |
-| ------------------- | ----------- | -------------------------------------------------------- |
-| injectMessage | `async function` | A utility function used to inject a message into the chat, identical to `params.injectMessage` detailed [**here**](/docs/api/params#injectmessage).                                                                                         |                                        |
-| streamMessage | `async function` | A utility function used to stream messages into the chat, identical to `params.streamMessage` detailed [**here**](/docs/api/params#streammessage).                                                                                          |                                        |
-| endStreamMessage    | `async function`  | A utility function used to indicate the end of an existing message stream, identical to `params.endMessageStream` detailed [**here**](/docs/api/params#endstreammessage).                   |
-| removeMessage       | `async function`  | A utility function used to remove a message from the chat, identical to `params.removeMessage` detailed [**here**](/docs/api/params#removemessage).                  |
-| messages            | `Array<Message>`     | Array containing all messages currently shown in the chatbot.                  |
-| replaceMessages       | `function`  | Directly replaces the current messages with provided messages.  |
+| Name                  | Type             | Parameter                                                   | Description                                                                                                                                          |
+|-----------------------|------------------|-------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| injectMessage         | `async function` | Refer [here](/docs/api/params#injectmessage)                | A utility function used to inject a message into the chat, identical to `params.injectMessage`.                                                      |
+| simulateStreamMessage | `async function` | Refer [here](/docs/api/params#simulatestreammessage)        | A utility function used to simulate streaming of messages into the chat, identical to `params.simulateStreamMessage`.                                |
+| streamMessage         | `async function` | Refer [here](/docs/api/params#streammessage)                | A utility function used to stream messages into the chat, identical to `params.streamMessage`.                                                       |
+| endStreamMessage      | `async function` | Refer [here](/docs/api/params#endstreammessage)             | A utility function used to indicate the end of an existing message stream, identical to `params.endMessageStream`.                                   |
+| removeMessage         | `async function` | Refer [here](/docs/api/params#removemessage)                | A utility function used to remove a message from the chat, identical to `params.removeMessage`.                                                      |
+| messages            | `Array<Message>`     | -        |Array containing all messages currently shown in the chatbot.                  |
+| replaceMessages       | `function`  | **newMessages (required)** - `Message[]` to replace chat with | Directly replaces the current messages with provided messages.  |
 
 #### Code Example
 ```jsx
@@ -299,11 +311,11 @@ const MyNestedComponent = () => {
 The `useNotifications` hook allows you to track and manage the chatbot's notifications functionality.
 
 #### Return Values
-| Name                   | Type       | Description                                                    |
-| ---------------------- | ---------- | -------------------------------------------------------------- |
-| notificationsToggledOn | `boolean ` | Indicates if the chatbot notifications is currently on or off. |
-| toggleNotifications    | `async function` | Toggles the chatbot notifications on or off.                   |
-| playNotificationSound  | `function` | Plays the notification sound.                                  |
+| Name                   | Type             | Parameter | Description                                                    |
+|------------------------|------------------|-----------|----------------------------------------------------------------|
+| notificationsToggledOn | `boolean`        | -         | Indicates if the chatbot notifications is currently on or off. |
+| toggleNotifications    | `async function` | **active (optional)** - `boolean` indicating desired end state  | Toggles the chatbot notifications on or off.                   |
+| playNotificationSound  | `function`       | -         | Plays the notification sound.                                  |
 
 #### Code Example
 ```jsx
@@ -324,13 +336,14 @@ const MyNestedComponent = () => {
 The `usePaths` hook allows you to track and manage the chatbot's paths.
 
 #### Return Values
-| Name                | Type        | Description                                              |
-| ------------------- | ----------- | -------------------------------------------------------- |
-| getCurrPath         | `function`  | Retrieves the current path of the user.                  |
-| getPrevPath         | `function`  | Retrieves the previous path of the user.                 |
-| goToPath            | `function`  | Sends the user to a specified path, identical to `params.goToPath` detailed [**here**](/docs/api/params#gotopath).                  |
-| paths               | `Array<string>`     | Array containing all paths the user has taken in order.      |
-| replacePaths        | `function`  | Directly replaces the current paths with provided paths (hardly a reason to do this, think twice).  |
+| Name         | Type             | Parameter | Description                                                                                                 |
+|--------------|------------------|-----------|-------------------------------------------------------------------------------------------------------------|
+| getCurrPath  | `function`       | -         | Retrieves the current path of the user.                                                                     |
+| getPrevPath  | `function`       | -         | Retrieves the previous path of the user.                                                                    |
+| goToPath     | `function`       | Refer [here](/docs/api/params#gotopath) | Sends the user to a specified path, identical to `params.goToPath`.                        |
+| paths        | `Array<string>`  | -         | Array containing all paths the user has taken in order.                                                     |
+| replacePaths | `function`       | **newPaths (required)** - `string[]` containing paths to replace with | Directly replaces the current paths with provided paths (hardly a reason to do this, think twice).          |
+
 
 #### Code Example
 ```jsx
@@ -357,11 +370,11 @@ const MyNestedComponent = () => {
 The `useSettings` hook allows you to track and manage the chatbot's settings.
 
 #### Return Values
-| Name                | Type        | Description                                              |
-| ------------------- | ----------- | -------------------------------------------------------- |
-| settings            | `Settings`  | Represents the current settings of the chatbot.          |
-| replaceSettings     | `function`  | Directly replaces the current settings with provided settings.  |
-| updateSettings      | `function`  | Modifies and merges the provided settings with existing settings. |
+| Name            | Type        | Parameter | Description                                                                  |
+|-----------------|-------------|-----------|------------------------------------------------------------------------------|
+| settings        | `Settings`  | -         | Represents the current settings of the chatbot.                             |
+| replaceSettings | `function`  | **newSettings (required)** - `Settings` to replace with | Directly replaces the current settings with provided settings.              |
+| updateSettings  | `function`  | **fields (required)** - `Settings` fields to update | Modifies and merges the provided settings with existing settings.           |
 
 #### Code Example
 ```jsx
@@ -390,11 +403,11 @@ const MyNestedComponent = () => {
 The `useStyles` hook allows you to track and manage the chatbot's styles.
 
 #### Return Values
-| Name                | Type        | Description                                              |
-| ------------------- | ----------- | -------------------------------------------------------- |
-| styles              | `Styles`    | Represents the current styles of the chatbot.            |
-| replaceStyles       | `function`  | Directly replaces the current styles with provided styles.  |
-| updateStyles        | `function`  | Modifies and merges the provided styles with existing styles. |
+| Name          | Type       | Parameter | Description                                                              |
+|---------------|------------|-----------|--------------------------------------------------------------------------|
+| styles        | `Styles`   | -         | Represents the current styles of the chatbot.                            |
+| replaceStyles | `function` | **newStyles (required)** - `Styles` to replace with | Directly replaces the current styles with provided styles.               |
+| updateStyles  | `function` | **fields (required)** - `Styles` fields to update | Modifies and merges the provided styles with existing styles.            |
 
 #### Code Example
 ```jsx
@@ -421,16 +434,16 @@ const MyNestedComponent = () => {
 The `useTextArea` hook allows you to track and manage the chatbot's text area field.
 
 #### Return Values
-| Name                         | Type        | Description                                              |
-| ---------------------------- | ----------- | -------------------------------------------------------- |
-| textAreaDisabled             | `boolean`   | Indicates if the text area is disabled.                  |
-| toggleTextAreaDisabled       | `function`  | Toggles the text area disabled state.                    |
-| textAreaSensitiveMode        | `boolean`   | Indicates if the text area is in sensitive mode.         |
-| toggleTextAreaSensitiveMode  | `function`  | Toggles the text area sensitive mode.                    |
-| getTextAreaValue             | `function`  | Retrieves the string value inside the text area.         |
-| setTextAreaValue             | `async function`  | Sets the value inside the text area, identical to `params.setTextAreaValue` detailed [**here**](/docs/api/params#settextareavalue).                     |
-| focusTextArea                | `function`  | Focuses on the text area.                                |
-| blurTextArea                 | `function`  | Blurs (lose focus of) the text area.                     |
+| Name                        | Type             | Parameter | Description                                                                                      |
+|-----------------------------|------------------|-----------|--------------------------------------------------------------------------------------------------|
+| textAreaDisabled            | `boolean`        | -         | Indicates if the text area is disabled.                                                          |
+| toggleTextAreaDisabled      | `function`       | **active (optional)** - `boolean` indicating desired end state | Toggles the text area disabled state.                                                            |
+| textAreaSensitiveMode       | `boolean`        | -         | Indicates if the text area is in sensitive mode.                                                 |
+| toggleTextAreaSensitiveMode | `function`       | **active (optional)** - `boolean` indicating desired end state | Toggles the text area sensitive mode.                                                            |
+| getTextAreaValue            | `function`       | -         | Retrieves the string value inside the text area.                                                 |
+| setTextAreaValue            | `async function` | Refer [here](/docs/api/params#settextareavalue) | Sets the value inside the text area, identical to `params.setTextAreaValue`.         |
+| focusTextArea               | `function`       | -         | Focuses on the text area.                                                                        |
+| blurTextArea                | `function`       | -         | Blurs (lose focus of) the text area.                                                             |
 
 #### Code Example
 ```jsx
@@ -457,12 +470,12 @@ const MyNestedComponent = () => {
 The `useToasts` hook allows you to track and manage the chatbot's toasts.
 
 #### Return Values
-| Name                         | Type        | Description                                              |
-| ---------------------------- | ----------- | -------------------------------------------------------- |
-| showToast     | `async function`  | Shows a toast in chat, identical to `params.showToast` detailed [**here**](/docs/api/params#showtoast).    |
-| dismissToast  | `async function`  | Dismisses a toast from chat, identical to `params.dismissToast` detailed [**here**](/docs/api/params#dismisstoast).                  |
-| toasts        | `Array<Toast>`     | Array containing all toasts currently shown in the chatbot                 |
-| replaceToasts | `function`  | Directly replaces the current toasts with provided toasts.  |
+| Name          | Type             | Parameter                                              | Description                                                                                   |
+|---------------|------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| showToast     | `async function` | Refer [here](/docs/api/params#showtoast)              | Shows a toast in chat, identical to `params.showToast`.                                       |
+| dismissToast  | `async function` | Refer [here](/docs/api/params#dismisstoast)           | Dismisses a toast from chat, identical to `params.dismissToast`.                              |
+| toasts        | `Array<Toast>`   | -                                                      | Array containing all toasts currently shown in the chatbot.                                   |
+| replaceToasts | `function`       | **newToasts (required)** - `Toast[]` to replace with                                                      | Directly replaces the current toasts with provided toasts.                                    |
 
 #### Code Example
 ```jsx
@@ -489,10 +502,11 @@ const MyNestedComponent = () => {
 The `useVoice` hook allows you to track and manage the chatbot's voice functionality.
 
 #### Return Values
-| Name           | Type       | Description                                            |
-| -------------- | ---------- | ------------------------------------------------------ |
-| voiceToggledOn | `boolean ` | Indicates if the chatbot voice is currently on or off. |
-| toggleVoice    | `async function` | Toggles the chatbot voice on or off.                   |
+| Name           | Type             | Parameter | Description                                            |
+|----------------|------------------|-----------|--------------------------------------------------------|
+| voiceToggledOn | `boolean`        | -         | Indicates if the chatbot voice is currently on or off. |
+| toggleVoice    | `async function` | **active (optional)** - `boolean` indicating desired end state | Toggles the chatbot voice on or off.                   |
+
 
 #### Code Example
 ```jsx

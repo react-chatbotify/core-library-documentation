@@ -128,13 +128,14 @@ Parameters contain information/functions that can be passed into **attributes** 
 - prevPath
 - goToPath
 - injectMessage
+- simulateStreamMessage
 - streamMessage
 - endStreamMessage
 - removeMessage
 - setTextAreaValue
 - showToast
 - dismissToast
-- openChat
+- toggleChatWindow
 - files (only available for `file` attribute)
 
 As shown in the `end` code snippet, the parameter used in its `message` attribute is `userInput`, accessed via the `params` object:
@@ -156,7 +157,7 @@ For details and usage on each of these parameters, you may consult the [**API do
   </div>
 </div>
 
-Not to be confused with `message` from the section on [**Attributes**](/docs/concepts/conversations#attributes), the `Message` component here represents the interactions between the user and the bot. Every element in the chatbot body (including custom components) are considered a Message (as **outlined in red** on the image above). Within a message you will find **5 properties**: 
+Not to be confused with `message` from the section on [**Attributes**](/docs/concepts/conversations#attributes), the `Message` component here represents the interactions between the user and the bot. Every element in the chatbot body (including custom components) are considered a Message (as **outlined in red** on the image above). Within a message you will find **5 required properties** and **2 optional properties**: 
 
 - id **(required)** - an auto-generated uuidv4 `string`, uniquely identifying a message
 - content **(required)** - a `string` or `JSX.Element`, representing the content of the message
@@ -168,7 +169,7 @@ Not to be confused with `message` from the section on [**Attributes**](/docs/con
 
 :::info Info
 
-For manipulating messages, it is recommended that you utilize `injectMessage` and `streamMessage` provided in [**params**](/docs/api/params#injectmessage) or [**hooks**](/docs/api/hooks#usemessages). If you are directly manipulating the `messages` array (not recommended), which is possible via the [`useMessages`](/docs/api/hooks#usemessages) hook, you need to specify **all 5 fields** yourself.
+For manipulating messages, it is recommended that you utilize `injectMessage`, `simulateStreamMessage` and `streamMessage` provided in [**params**](/docs/api/params#injectmessage) or [**hooks**](/docs/api/hooks#usemessages). If you are directly manipulating the `messages` array (not recommended), which is possible via `replaceMessages` in the [`useMessages`](/docs/api/hooks#usemessages) hook, you need to specify **at least the 5 required fields** yourself.
 
 :::
 
@@ -180,7 +181,7 @@ For manipulating messages, it is recommended that you utilize `injectMessage` an
   </div>
 </div>
 
-Toasts are strictly speaking not essential for chatbot conversations. However, they are oftentime useful in providing feedback to users (as **outlined in red** on the image above). For example, the [**input-validator**](https://github.com/react-chatbotify-plugins/input-validator) plugin uses toasts to inform users of any input validation errors. A toast comprises of **3 properties**:
+Toasts are strictly speaking not essential for chatbot conversations. However, they are oftentime useful in providing feedback to users (as **outlined in red** on the image above). For example, the [**input-validator**](https://github.com/react-chatbotify-plugins/input-validator) plugin uses toasts to inform users of any input validation errors. A toast comprises of **2 required properties** and **1 optional property**:
 
 - id (required) - an auto-generated uuidv4 `string`, uniquely identifying a toast
 - content (required) - a `string` or `JSX.Element`, representing the content of the toast

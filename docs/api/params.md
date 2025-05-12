@@ -27,7 +27,7 @@ The following table provides details about the parameters available for attribut
 | setTextAreaValue| `async function`          | All Attributes    | Sets a value directly within the text area.                                                                                        |
 | showToast       | `async function`          | All Attributes    | Shows a toast that is dismissed after a duration or on user click.                                                                                                          |
 | dismissToast       | `async function`          | All Attributes    | Dismisses a toast by toast id.                                                                                                          |
-| openChat        | `async function`          | All Attributes    | Opens or closes the chat component.                                                                                               |
+| toggleChatWindow        | `async function`          | All Attributes    | Opens or closes the chat component.                                                                                               |
 | files           | `FileList`          | Only `file` Attribute | Represents the files uploaded by the user.                                                                                        |
 
 :::caution Caution
@@ -296,7 +296,7 @@ start: {
 }
 ```
 
-### openChat
+### toggleChatWindow
 
 #### Description
 Sets the chat window to be open or close.
@@ -305,13 +305,13 @@ Sets the chat window to be open or close.
 `async function`
 
 #### Parameters
-- `isOpen` (required): a `boolean` indicating if chat window should be set open.
+- `active` (optional): a `boolean` indicating desired final state (if not specified, will simply toggle current state).
 
 #### Code Example
 ```jsx
 start: {
   message: async (params) => {
-    await params.openChat(true);
+    await params.toggleChatWindow(true);
   }
 }
 ```

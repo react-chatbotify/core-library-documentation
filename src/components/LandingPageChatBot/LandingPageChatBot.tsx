@@ -18,7 +18,7 @@ const LandingPageChatBot = () => {
 			}
 		} else {
 			if (!isDesktop) {
-				params.openChat(false);
+				params.toggleChatWindow(false);
 			}
 			history.push(page);
 		}
