@@ -1,5 +1,5 @@
 ---
-sidebar_position: 17
+sidebar_position: 24
 title: HTML Render
 description: html render chatbot example
 keywords: [react, chat, chatbot, chatbotify]

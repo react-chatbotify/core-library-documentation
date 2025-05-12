@@ -1,5 +1,5 @@
 ---
-sidebar_position: 19
+sidebar_position: 20
 title: Multiple Themes
 description: multiple themes chatbot example
 keywords: [react, chat, chatbot, chatbotify]

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 18
+sidebar_position: 19
 title: Single Theme
 description: single theme chatbot example
 keywords: [react, chat, chatbot, chatbotify]

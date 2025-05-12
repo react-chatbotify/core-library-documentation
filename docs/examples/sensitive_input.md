@@ -1,5 +1,5 @@
 ---
-sidebar_position: 16
+sidebar_position: 18
 title: Sensitive Input
 description: sensitive input chatbot example
 keywords: [react, chat, chatbot, chatbotify]

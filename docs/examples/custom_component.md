@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 13
 title: Custom Component
 description: custom component chatbot example
 keywords: [react, chat, chatbot, chatbotify]

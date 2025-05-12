@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 14
 title: Custom Button
 description: custom button chatbot example
 keywords: [react, chat, chatbot, chatbotify]

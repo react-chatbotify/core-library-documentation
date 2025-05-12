@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 21
 title: Custom Events
 description: custom events chatbot example
 keywords: [react, chat, chatbot, chatbotify]

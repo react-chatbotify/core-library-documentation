@@ -1,5 +1,5 @@
 ---
-sidebar_position: 21
+sidebar_position: 22
 title: Custom Hooks
 description: custom hooks chatbot example
 keywords: [react, chat, chatbot, chatbotify]
