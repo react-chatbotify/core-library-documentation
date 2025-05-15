@@ -747,7 +747,7 @@ Emitted when a user uploads a file.
 #### Data
 | Name      | Type       | Description                             |
 |-----------|------------|-----------------------------------------|
-| files     | `FileList` | The list of files uploaded by the user. |
+| files     | `Array<File>` | The list of files uploaded by the user. |
 
 #### Code Example
 ```jsx

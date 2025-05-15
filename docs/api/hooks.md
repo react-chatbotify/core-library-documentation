@@ -243,7 +243,7 @@ The `useFlow` hook allows you to get a flow, restart a flow and track if a flow 
 | ------------------- | ---------- | --------- | -------------------------------------------------------- |
 | hasFlowStarted      | `boolean`  | -         | Indicates if the chatbot flow has started.               |
 | getFlow             | `function` | -         | Retrieves the chatbot flow.                              |
-| restartFlow         | `function` | -         | Restarts the chatbot flow.                               |
+| restartFlow         | `async function` | -         | Restarts the chatbot flow.                               |
 
 #### Code Example
 ```jsx

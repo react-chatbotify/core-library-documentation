@@ -28,7 +28,7 @@ The following table provides details about the parameters available for attribut
 | showToast       | `async function`          | All Attributes    | Shows a toast that is dismissed after a duration or on user click.                                                                                                          |
 | dismissToast       | `async function`          | All Attributes    | Dismisses a toast by toast id.                                                                                                          |
 | toggleChatWindow        | `async function`          | All Attributes    | Opens or closes the chat component.                                                                                               |
-| files           | `FileList`          | Only `file` Attribute | Represents the files uploaded by the user.                                                                                        |
+| files           | `Array<File>`          | Only `file` Attribute | Represents the files uploaded by the user.                                                                                        |
 
 :::caution Caution
 
@@ -322,7 +322,7 @@ start: {
 List of files uploaded by the user (only present in the [**file attribute**](/docs/api/attributes#file)).
 
 #### Type
-`FileList`
+`Array<File>`
 
 #### Parameters
 - None
