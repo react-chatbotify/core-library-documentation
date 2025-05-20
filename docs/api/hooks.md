@@ -337,7 +337,7 @@ import { useOnRcbEvent, RcbEvent, RcbChangePathEvent } from "react-chatbotify";
 const MyNestedComponent = () => {
   const handler = (event: RcbChangePathEvent) => {
     // handle change path logic
-	}
+  }
 
   // listens on the change path event
   useOnRcbEvent(RcbEvent.CHANGE_PATH, handler);
