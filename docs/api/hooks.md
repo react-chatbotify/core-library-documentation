@@ -90,12 +90,13 @@ Below is a list of available hooks along with a brief description for each of th
 | useFlow             | Allows retrieving and restarting chatbot flow and tracks if flow has started.           |
 | useMessages         | Handles sending, clearing, and retrieving messages in the chatbot.                      |
 | useNotifications    | Manages chatbot notifications, such as toggling notifications on or off.                |
-| usePaths            | Manages chatbot conversation paths, such as navigation                                  |
+| useOnRcbEvent       | Registers a chatbot event with corresponding handler.                                   |
+| usePaths            | Manages chatbot conversation paths, such as navigation.                                 |
 | useSettings         | Accesses and modifies chatbot settings.                                                 |
 | useStyles           | Accesses and modifies chatbot styles.                                                   |
 | useTextArea         | Manages the text input area of the chatbot, including setting and clearing values.      |
 | useToasts            | Manages toasts shown within the chatbot, such as showing or missing them.              |
-| useVoice            | Manages voice functionality, such as toggling voice on or off                           |
+| useVoice            | Manages voice functionality, such as toggling voice on or off.                          |
 
 ## Hook Details
 
@@ -319,6 +320,30 @@ const MyNestedComponent = () => {
 
   return (
     <button onClick={toggleNotifications}></button>
+  )
+};
+```
+
+### useOnRcbEvent
+
+#### Description
+The `useOnRcbEvent` hook allows you to register a chatbot event with its corresponding handler. It accepts 2 parameters, the first being a `RcbEvent` (provided as an `enum` export by the library) and the second being the corresponding event handler. Note that the hook does not return any value since it simply registers an event. This is **commonly used in plugins** which rely on listening on [**events**](/docs/api/events) and taking actions via [**hooks**](/docs/api/hooks).
+
+#### Code Example
+```jsx
+import { useEffect } from "react";
+import { useOnRcbEvent, RcbEvent, RcbChangePathEvent } from "react-chatbotify";
+
+const MyNestedComponent = () => {
+  const handler = (event: RcbChangePathEvent) => {
+    // handle change path logic
+	}
+
+  // listens on the change path event
+  useOnRcbEvent(RcbEvent.CHANGE_PATH, handler);
+
+  return (
+    <ExampleComponent/>
   )
 };
 ```
