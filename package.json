@@ -30,7 +30,7 @@
     "openai": "^4.47.1",
     "prism-react-renderer": "^2.3.1",
     "react": "^18.2.0",
-    "react-chatbotify": "^2.0.0-beta.37",
+    "react-chatbotify": "^2.0.0-beta.38",
     "react-dom": "^18.2.0",
     "react-github-btn": "^1.4.0"
   },
