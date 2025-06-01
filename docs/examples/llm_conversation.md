@@ -32,30 +32,12 @@ const MyChatBot = () => {
 	// initialize the plugin
 	const plugins = [LlmConnector()];
 
-	// checks user message stop condition to end llm conversation
-	const onUserMessageCheck = async (message: Message) => {
-		if (
-			typeof message.content === 'string' &&
-			message.content.toUpperCase() === 'RESTART'
-		) {
-			return 'start';
-		}
-	};
-
-	// checks key down stop condition to end llm conversation
-	const onKeyDownCheck = async (event: KeyboardEvent) => {
-		if (event.key === 'Escape') {
-			return 'start';
-		}
-		return null;
-	}
-
 	// example flow for testing
 	const flow: Flow = {
 		start: {
 			message: "Hello, feel free to ask away!",
 			chatDisabled: true,
-			transition: 0
+			transition: 0,
 			path: "webllm",
 		},
 		webllm: {
@@ -66,10 +48,6 @@ const MyChatBot = () => {
 					model: 'Qwen2-0.5B-Instruct-q4f16_1-MLC',
 				}),
 				outputType: 'character',
-				stopConditions: {
-					onUserMessage: onUserMessageCheck,
-					onKeyDown: onKeyDownCheck,
-				},
 			},
 		},
 	};
