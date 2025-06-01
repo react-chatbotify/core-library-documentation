@@ -24,7 +24,7 @@
     "@mdx-js/react": "^3.0.1",
     "@rcb-plugins/html-renderer": "^0.1.0",
     "@rcb-plugins/input-validator": "^0.2.0",
-    "@rcb-plugins/llm-connector": "^0.2.0",
+    "@rcb-plugins/llm-connector": "^0.3.0",
     "@rcb-plugins/markdown-renderer": "^0.1.1",
     "clsx": "^1.2.1",
     "openai": "^4.47.1",

@@ -11,6 +11,5 @@
   },
   "include": [
     "src/**/*",
-    "node_modules/@wllama/wllama/**/*"
   ]
 }

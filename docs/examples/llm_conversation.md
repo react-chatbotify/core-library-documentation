@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # LLM Conversation
 
-The following is an example showing how to integrate in-browser models (e.g. via [**WebLlm**](https://webllm.mlc.ai/)/[**Wllama**](https://www.npmjs.com/package/@wllama/wllama)) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example also taps on the [**WebLlmProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/WebLlm.md) and [**WllamaProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/Wllama.md), both of which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
+The following is an example showing how to integrate in-browser models (e.g. via [**WebLlm**](https://webllm.mlc.ai/)) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example taps on the [**WebLlmProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/WebLlm.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
 
 :::tip
 
@@ -53,14 +53,10 @@ const MyChatBot = () => {
 	// example flow for testing
 	const flow: Flow = {
 		start: {
-			message: "Hello, pick a model runtime to get started!",
-			options: ["WebLlm", "Wllama"],
+			message: "Hello, feel free to ask away!",
 			chatDisabled: true,
-			path: async (params) => {
-				await params.simulateStreamMessage("Type 'RESTART' or hit 'ESC` to pick another runtime!");
-				await params.simulateStreamMessage("Ask away!");
-				return params.userInput.toLowerCase();
-			},
+			transition: 0
+			path: "webllm",
 		},
 		webllm: {
 			llmConnector: {
@@ -68,23 +64,6 @@ const MyChatBot = () => {
 				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/WebLlm.md
 				provider: new WebLlmProvider({
 					model: 'Qwen2-0.5B-Instruct-q4f16_1-MLC',
-				}),
-				outputType: 'character',
-				stopConditions: {
-					onUserMessage: onUserMessageCheck,
-					onKeyDown: onKeyDownCheck,
-				},
-			},
-		},
-		wllama: {
-			llmConnector: {
-				// provider configuration guide:
-				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/Wllama.md
-				provider: new WllamaProvider({
-					modelUrl: 'https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF/resolve/main/smollm2-360m-instruct-q8_0.gguf',
-					loadModelConfig: {
-						n_ctx: 8192,
-					},
 				}),
 				outputType: 'character',
 				stopConditions: {

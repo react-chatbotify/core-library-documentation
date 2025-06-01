@@ -6,7 +6,6 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-pre-background: #000000;
   --ifm-color-primary: #491d8d;
   --ifm-color-primary-dark: #441b83;
   --ifm-color-primary-darker: #411b7a;
@@ -106,4 +105,12 @@ table th:nth-of-type(4) {
 .hero .rcb-options:hover {
   color: white !important;
   background-color: var(--ifm-color-inverse-primary) !important;
+}
+
+/* ensure code blocks can be seen in chatbot */
+#floating-chat-bot pre {
+  --ifm-pre-background: #000000;
+}
+#landing-page-chat-bot pre {
+  --ifm-pre-background: #000000;
 }
