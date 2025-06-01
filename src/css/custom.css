@@ -108,9 +108,9 @@ table th:nth-of-type(4) {
 }
 
 /* ensure code blocks can be seen in chatbot */
-#floating-chat-bot pre {
+.rcb-chat-window pre {
   --ifm-pre-background: #000000;
 }
-#landing-page-chat-bot pre {
-  --ifm-pre-background: #000000;
+.rcb-chat-window code {
+  background-color: #000000;
 }
