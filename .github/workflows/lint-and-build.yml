@@ -67,12 +67,12 @@ jobs:
         # Builds project
         run: npm run build --if-present
 
-      - name: Upload build artifact (dist)
+      - name: Upload build artifact (build)
         # Uploads build output
         uses: actions/upload-artifact@v4
         with:
           name: ${{ vars.PROJECT_NAME }}
-          path: dist
+          path: build
           retention-days: 1 
 
   trigger-deploy:
