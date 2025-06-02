@@ -38,7 +38,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://react-chatbotify.com',
+  url: process.env.PUBLIC_SITE_ROOT || 'http://localhost:3000',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/docs',
@@ -89,6 +89,7 @@ const config = {
         logo: {
           alt: 'React ChatBotify Logo',
           src: 'img/react-chatbotify.png',
+          href: process.env.PUBLIC_SITE_ROOT || '/',
         },
         items: [
           {
