@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/tjtanjin/react-chatbotify-docs/actions"> <img src="https://github.com/tjtanjin/react-chatbotify-docs/actions/workflows/build.yml/badge.svg" /> </a>
+  <a href="https://github.com/React-ChatBotify/core-library-documentation/actions/workflows/ci-cd-pipeline.yml"> <img src="https://github.com/React-ChatBotify/core-library-documentation/actions/workflows/ci-cd-pipeline.yml/badge.svg" /> </a>
 </p>
 
 ## Table of Contents
@@ -21,7 +21,7 @@
 ### Introduction
 
 <p align="center">
-  <img height="400px" src="https://github.com/tjtanjin/react-chatbotify-docs/assets/43908963/dfa40631-e328-494a-911f-774d9549a5e5" />
+  <img height="400px" src="https://github.com/React-ChatBotify/core-library-documentation/assets/43908963/dfa40631-e328-494a-911f-774d9549a5e5" />
 </p>
 
 React ChatBotify Docs is the user guide for the [React ChatBotify library](https://www.npmjs.com/package/react-chatbotify). The guide itself is built on Docusaurus and this repository contains the code for generating the site.
@@ -60,15 +60,15 @@ Typescript
 </p>
 
 #### Project Repository
-- https://github.com/tjtanjin/react-chatbotify-docs
+- https://github.com/React-ChatBotify/core-library-documentation
 
 ### Team
 * [Tan Jin](https://github.com/tjtanjin)
 
 ### Contributing
-In general, the forking workflow is encouraged and you may open a pull request with clear descriptions on the changes and what they are intended to do (enhancement, bug fixes etc). Alternatively, you may simply raise bugs or suggestions by opening an [**issue**](https://github.com/tjtanjin/react-chatbotify-docs/issues) or raising it up on [**discord**](https://discord.gg/6R4DK4G5Zh).
+In general, the forking workflow is encouraged and you may open a pull request with clear descriptions on the changes and what they are intended to do (enhancement, bug fixes etc). Alternatively, you may simply raise bugs or suggestions by opening an [**issue**](https://github.com/React-ChatBotify/core-library-documentation/issues) or raising it up on [**discord**](https://discord.gg/6R4DK4G5Zh).
 
 Note: Templates have been created for pull requests and issues to guide you in the process.
 
 ### Support
-If there are any questions pertaining to the user guide or library itself (usage or implementation wise), you may create an [**issue**](https://github.com/tjtanjin/react-chatbotify-docs/issues), raise it up on [**discord**](https://discord.gg/6R4DK4G5Zh), or drop me an email at: **cjtanjin@gmail.com.**
+If there are any questions pertaining to the user guide or library itself (usage or implementation wise), you may create an [**issue**](https://github.com/React-ChatBotify/core-library-documentation/issues), raise it up on [**discord**](https://discord.gg/6R4DK4G5Zh), or drop me an email at: **cjtanjin@gmail.com.**
