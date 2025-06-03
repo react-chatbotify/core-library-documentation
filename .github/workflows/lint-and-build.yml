@@ -16,6 +16,10 @@ on:
         description: 'The deployment environment e.g. production or development'
         required: true
         type: string
+      skip_deploy:
+        description: 'Skip the deploy step (true/false)'
+        required: true
+        type: boolean
 
 jobs:
   lint:
@@ -52,6 +56,9 @@ jobs:
       - name: Checkout code
         # Checks out the repository code.
         uses: actions/checkout@v4
+
+      - name: Load env file
+        run: echo "${{ secrets.APPLICATION_ENV_FILE }}" > .env
       
       - name: Setup Node.js ${{ inputs.node-version }}
         # Sets up NodeJS environment
@@ -78,6 +85,7 @@ jobs:
   trigger-deploy:
     needs: build
     name: Deploy
+    if: ${{ inputs.skip_deploy == false }}
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     with:
