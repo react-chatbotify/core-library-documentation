@@ -46,7 +46,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'tjtanjin', // Usually your GitHub org/user name.
+  organizationName: 'react-chatbotify', // Usually your GitHub org/user name.
   projectName: 'react-chatbotify-docs', // Usually your repo name.
 
   onBrokenLinks: 'warn',
