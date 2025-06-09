@@ -42,7 +42,7 @@ const config = {
   url: process.env.PUBLIC_SITE_ROOT || 'http://localhost:3000',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs',
+  baseUrl: '/docs/v2',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
