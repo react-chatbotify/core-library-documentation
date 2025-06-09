@@ -8,18 +8,18 @@ const darkCodeTheme = themes.dracula;
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'React ChatBotify',
-  tagline: 'A modern React library for creating a flexible and extensible chatbot.',
+  tagline: 'A modern React library for creating flexible and extensible chatbots.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://react-chatbotify.tjtanjin.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/legacy/v1/',
+  baseUrl: '/docs/v1',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'tjtanjin', // Usually your GitHub org/user name.
+  organizationName: 'react-chatbotify', // Usually your GitHub org/user name.
   projectName: 'react-chatbotify-docs', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -42,6 +42,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -72,24 +73,62 @@ const config = {
             label: 'Documentation',
           },
           {
+            label: 'Plugins',
+            to: (process.env.PUBLIC_SITE_ROOT || '') + '/plugins',
+            position: 'left',
+          },
+          {
+            label: 'Themes',
+            to: (process.env.PUBLIC_SITE_ROOT || '') + '/themes',
+            position: 'left',
+          },
+          {
             label: 'Playground',
             to: '/playground',
             position: 'left',
           },
           {
-            label: 'Contributing',
-            to: 'https://github.com/tjtanjin/react-chatbotify#contributing',
+            type: 'dropdown',
+            label: 'About Us',
             position: 'left',
+            items: [
+              {
+                label: 'Our Team',
+                to: (process.env.PUBLIC_SITE_ROOT || '') + '/our-team',
+              },
+              {
+                label: 'Terms of Service',
+                to: (process.env.PUBLIC_SITE_ROOT || '') + '/terms-of-service',
+              },
+              {
+                label: 'Privacy Policy',
+                to: (process.env.PUBLIC_SITE_ROOT || '') + '/privacy-policy',
+              },
+            ],
           },
           {
-            href: 'https://github.com/tjtanjin/react-chatbotify',
+            href: 'https://github.com/react-chatbotify/react-chatbotify',
             label: 'GitHub',
             position: 'right',
           },
           {
-            href: 'https://discord.gg/6R4DK4G5Zh',
-            label: 'Discord',
+            type: 'dropdown',
+            label: 'Community',
             position: 'right',
+            items: [
+              {
+                label: 'Discord',
+                href: 'https://discord.gg/6R4DK4G5Zh',
+              },
+              {
+                label: 'Instagram',
+                href: 'https://instagram.com/react.chatbotify',
+              },
+              {
+                label: 'Twitter (X)',
+                href: 'https://x.com/reactchatbotify',
+              },
+            ],
           },
         ],
       },
@@ -129,74 +168,6 @@ const config = {
         backgroundColor: '#ff0000',
         textColor: '#091E42',
         isCloseable: false
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Learn',
-            items: [
-              {
-                label: 'Quickstart',
-                to: '/docs/introduction/quickstart',
-              },
-              {
-                label: 'Overview',
-                to: '/docs/introduction/overview',
-              },
-              {
-                label: 'API Documentation',
-                to: '/docs/api/bot_options',
-              },
-              {
-                label: 'Examples',
-                to: '/docs/examples/basic_form',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord',
-                href: 'https://discord.gg/6R4DK4G5Zh',
-              },
-              {
-                label: 'Lounge',
-                href: 'https://discord.gg/X8VSdZvBQY',
-              },
-              {
-                label: 'GitHub Discussions',
-                href: 'https://github.com/tjtanjin/react-chatbotify/discussions',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Articles',
-                href: 'https://medium.com/@tjtanjin/how-to-setup-a-chatbot-with-react-chatbotify-a-step-by-step-tutorial-65c8a09bad19',
-              },
-              {
-                label: 'Changelog',
-                href: 'https://github.com/tjtanjin/react-chatbotify/blob/main/CHANGELOG.md',
-              },
-              {
-                label: 'GitHub Repo',
-                href: 'https://github.com/tjtanjin/react-chatbotify',
-              },
-            ],
-          },
-        ],
-        logo: {
-          alt: 'React ChatBotify Logo',
-          src: 'img/react-chatbotify.png',
-          href: 'https://www.npmjs.com/package/react-chatbotify',
-          width: 100,
-          height: 100,
-        },
-        copyright: `Copyright © ${new Date().getFullYear()} React ChatBotify.`,
       },
     })
 };
