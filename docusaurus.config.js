@@ -134,11 +134,6 @@ const config = {
             ],
           },
           {
-            label: 'Gallery',
-            to: 'https://gallery.react-chatbotify.com',
-            position: 'left',
-          },
-          {
             href: 'https://github.com/tjtanjin/react-chatbotify',
             label: 'GitHub',
             position: 'right',

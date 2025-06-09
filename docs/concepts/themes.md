@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Themes
 
-A newly added feature in **v2** of the chatbot, the `themes` prop allows users a quick and convenient way to customize their chatbot. Browsing of themes can be done on [**React ChatBotify Gallery**](https://gallery.react-chatbotify.com) or manually via the [**GitHub Themes Repository**](https://github.com/tjtanjin/react-chatbotify-themes/tree/main/themes).
+A newly added feature in **v2** of the chatbot, the `themes` prop allows users a quick and convenient way to customize their chatbot. Browsing of themes can be done on [**React ChatBotify Gallery**](https://react-chatbotify.com) or manually via the [**GitHub Themes Repository**](https://github.com/react-chatbotify/react-chatbotify-themes/tree/main/themes).
 
 The `theme` prop can accept a single **Theme** object or a list of it. A Theme object contains the following fields:
 - **id**: id of the theme
@@ -34,7 +34,7 @@ const MyComponent = () => {
     }
   }
 
-  // themes available for browsing at: https://gallery.react-chatbotify.com
+  // themes available for browsing at: https://react-chatbotify.com
   const themes = [
     {id: "minimal_midnight", version: "0.1.0"},
     {id: "simple_blue", version: "0.1.0"}

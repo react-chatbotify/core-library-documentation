@@ -115,7 +115,7 @@ Previously, using the library in SSR frameworks (e.g. NextJS) involved importing
 With the **v2** release, there are several new features that have been added, most of which are based on popular requests from users.
 
 ### New Themes Prop
-With v2, there is now a `themes` prop available for users to browse and quickly customise their setup. You may browse themes on [**React ChatBotify Gallery**](https://gallery.react-chatbotify.com) as well as read up on the [**documentation**](/docs/concepts/themes) or [**examples**](/docs/examples/multiple_themes) as well.
+With v2, there is now a `themes` prop available for users to browse and quickly customise their setup. You may browse themes on [**React ChatBotify Gallery**](https://react-chatbotify.com/themes) as well as read up on the [**documentation**](/docs/concepts/themes) or [**examples**](/docs/examples/multiple_themes) as well.
 
 New Additions:
 - Added [**`themes`**](/docs/concepts/themes) prop for quick customisation of chatbot

@@ -83,7 +83,7 @@ export const DefaultStyles: Styles = {
 
 :::tip Tip
 
-Before diving into styling, you may be interested in [**browsing for themes**](https://gallery.react-chatbotify.com) to pick out designs close to your desired appearance.
+Before diving into styling, you may be interested in [**browsing for themes**](https://react-chatbotify.com/themes) to pick out designs close to your desired appearance.
 
 :::
 

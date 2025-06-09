@@ -78,6 +78,6 @@ render(
 
 :::tip Tip
 
-You can potentially save time by [**browsing for themes**](https://gallery.react-chatbotify.com) to pick out designs close to your desired appearance, and then customize on top of it.
+You can potentially save time by [**browsing for themes**](https://react-chatbotify.com/themes) to pick out designs close to your desired appearance, and then customize on top of it.
 
 :::

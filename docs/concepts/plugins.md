@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Plugins
 
-A newly added feature in **v2** of the chatbot, the `plugins` prop provides users with the means to install and use custom plugins. Similar to [**themes**](/docs/concepts/themes), the browsing of plugins can be done on [**React ChatBotify Gallery**](https://gallery.react-chatbotify.com), where you will find both **official and community plugins**.
+A newly added feature in **v2** of the chatbot, the `plugins` prop provides users with the means to install and use custom plugins. Similar to [**themes**](/docs/concepts/themes), the browsing of plugins can be done on [**React ChatBotify Gallery**](https://react-chatbotify.com/plugins), where you will find both **official and community plugins**.
 
 ## Overview
 
