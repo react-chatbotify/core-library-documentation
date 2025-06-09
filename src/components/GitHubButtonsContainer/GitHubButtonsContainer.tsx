@@ -7,22 +7,22 @@ export default function GitHubButtonsContainer(): JSX.Element {
 		<div className={styles.gitHubButtonContainer}>
 			<div className={styles.gitHubButton}>
 				<GitHubButton
-					href="https://github.com/tjtanjin/react-chatbotify"
+					href="https://github.com/react-chatbotify/react-chatbotify"
 					data-color-scheme="no-preference: light; light: light_high_contrast; dark: dark_high_contrast;"
 					data-size="large"
 					data-show-count="true"
-					aria-label="Star tjtanjin/react-chatbotify on GitHub"
+					aria-label="Star react-chatbotify/react-chatbotify on GitHub"
 				>
 					Star
 				</GitHubButton>
 			</div>
 			<div className={styles.gitHubButton}>
 				<GitHubButton
-					href="https://github.com/tjtanjin/react-chatbotify/fork"
+					href="https://github.com/react-chatbotify/react-chatbotify/fork"
 					data-color-scheme="no-preference: light; light: light_high_contrast; dark: dark_high_contrast;"
 					data-size="large"
 					data-show-count="true"
-					aria-label="Fork tjtanjin/react-chatbotify on GitHub"
+					aria-label="Fork react-chatbotify/react-chatbotify on GitHub"
 				>
 					Fork
 				</GitHubButton>

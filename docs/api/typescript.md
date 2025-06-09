@@ -20,7 +20,7 @@ The library provides the following external type definitions which you may impor
 
 :::tip Tip
 
-Use an editor that is able to automatically detect the required types for an easier time! You may also refer to the type definitions [**here**](https://github.com/tjtanjin/react-chatbotify/tree/main/src/types).
+Use an editor that is able to automatically detect the required types for an easier time! You may also refer to the type definitions [**here**](https://github.com/react-chatbotify/react-chatbotify/tree/main/src/types).
 
 :::
 

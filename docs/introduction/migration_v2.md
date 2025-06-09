@@ -15,7 +15,7 @@ The **v2 beta release** of React ChatBotify is now available! This update includ
 - Prepare the chatbot for a stable release
 - Lay the foundation for supporting plugins
 
-Future beta releases are not expected to introduce further breaking changes, as all major changes have been consolidated into this first release. That said, kindly report any bugs encountered as soon as possible on [**discord**](https://discord.gg/6R4DK4G5Zh) or via [**github**](https://github.com/tjtanjin/react-chatbotify).
+Future beta releases are not expected to introduce further breaking changes, as all major changes have been consolidated into this first release. That said, kindly report any bugs encountered as soon as possible on [**discord**](https://discord.gg/6R4DK4G5Zh) or via [**github**](https://github.com/react-chatbotify/react-chatbotify).
 
 This migration guide is organized by the importance of the changes:
 - Breaking Changes (mandatory to address to prevent library breakage)

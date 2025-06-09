@@ -15,7 +15,7 @@ The `theme` prop can accept a single **Theme** object or a list of it. A Theme o
 - **cacheDuration**: duration to cache the theme for before fetching again
 - **baseUrl**: base url for fetching the theme from
 
-The only required field is **id**, though you are also encouraged to specify the **version** in case a theme update deviates from your intended design. The **cacheDuration** allows you to specify in seconds how long a theme should be cached for (default 30 days). The **baseUrl** is an advanced feature, useful only if you are hosting your own [**GitHub Themes Repository**](https://github.com/tjtanjin/react-chatbotify-themes/tree/main/themes). If you are exploring such an option and need help setting up the repository, feel free to reach out on [**discord**](https://discord.gg/6R4DK4G5Zh).
+The only required field is **id**, though you are also encouraged to specify the **version** in case a theme update deviates from your intended design. The **cacheDuration** allows you to specify in seconds how long a theme should be cached for (default 30 days). The **baseUrl** is an advanced feature, useful only if you are hosting your own [**GitHub Themes Repository**](https://github.com/react-chatbotify/react-chatbotify-themes/tree/main/themes). If you are exploring such an option and need help setting up the repository, feel free to reach out on [**discord**](https://discord.gg/6R4DK4G5Zh).
 
 :::tip Tip
 

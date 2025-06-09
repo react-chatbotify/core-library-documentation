@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200px" src="https://raw.githubusercontent.com/tjtanjin/react-chatbotify/main/assets/logo.png" />
+  <img width="200px" src="https://raw.githubusercontent.com/react-chatbotify/react-chatbotify/main/assets/logo.png" />
   <h1 align="center">React ChatBotify Docs</h1>
 </p>
 
@@ -28,7 +28,7 @@ React ChatBotify Docs is the user guide for the [React ChatBotify library](https
 
 The goal of React ChatBotify Docs is to provide users with ease of access to the information for using the React ChatBotify library. To achieve this, a great deal of effort has gone into curating the user guide and a sharing can be found at this [article](https://tjtanjin.medium.com/beyond-the-code-reflections-on-crafting-an-effective-user-guide-0480d8af0cd9).
 
-Note that this repository contains the code for the user guide. If you're looking for the repository for the React ChatBotify library itself, you may [look here](https://github.com/tjtanjin/react-chatbotify).
+Note that this repository contains the code for the user guide. If you're looking for the repository for the React ChatBotify library itself, you may [look here](https://github.com/react-chatbotify/react-chatbotify).
 
 ### Features
 

@@ -52,7 +52,7 @@ const MyChatBot = () => {
 					link = "https://react-chatbotify.com/docs/examples/basic_form";
 					break;
 				case "Github":
-					link = "https://github.com/tjtanjin/react-chatbotify/";
+					link = "https://github.com/react-chatbotify/react-chatbotify/";
 					break;
 				case "Discord":
 					link = "https://discord.gg/6R4DK4G5Zh";

@@ -219,7 +219,7 @@ const DefaultSettings: Settings = {
 
 :::info Info
 
-Default values for icons, avatars and JSX Elements may not be reflected in the tables below due to space constraints. If you would like information on those, you may refer to the source code containing the default settings [**here**](https://github.com/tjtanjin/react-chatbotify/blob/main/src/constants/internal/DefaultSettings.tsx).
+Default values for icons, avatars and JSX Elements may not be reflected in the tables below due to space constraints. If you would like information on those, you may refer to the source code containing the default settings [**here**](https://github.com/react-chatbotify/react-chatbotify/blob/main/src/constants/internal/DefaultSettings.tsx).
 
 :::
 

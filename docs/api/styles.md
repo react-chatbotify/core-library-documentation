@@ -159,6 +159,6 @@ The utilization of styles is remarkably simple, as each section readily accepts 
 
 :::tip Tip
 
-If you wish to customise the chatbot appearance with even more granularity, you may also overwrite the CSS classes directly. Class names for this library are appended with `rcb` and you may find the relevant classes through **inspect element** or by combing through the CSS files within the components in the [**code repository**](https://github.com/tjtanjin/react-chatbotify/tree/main/src/components).
+If you wish to customise the chatbot appearance with even more granularity, you may also overwrite the CSS classes directly. Class names for this library are appended with `rcb` and you may find the relevant classes through **inspect element** or by combing through the CSS files within the components in the [**code repository**](https://github.com/react-chatbotify/react-chatbotify/tree/main/src/components).
 
 :::

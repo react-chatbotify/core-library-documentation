@@ -134,7 +134,7 @@ const config = {
             ],
           },
           {
-            href: 'https://github.com/tjtanjin/react-chatbotify',
+            href: 'https://github.com/react-chatbotify/react-chatbotify',
             label: 'GitHub',
             position: 'right',
           },
@@ -233,7 +233,7 @@ const config = {
               },
               {
                 label: 'GitHub Discussions',
-                href: 'https://github.com/tjtanjin/react-chatbotify/discussions',
+                href: 'https://github.com/react-chatbotify/react-chatbotify/discussions',
               },
             ],
           },
@@ -246,11 +246,11 @@ const config = {
               },
               {
                 label: 'Changelog',
-                href: 'https://github.com/tjtanjin/react-chatbotify/blob/main/CHANGELOG.md',
+                href: 'https://github.com/react-chatbotify/react-chatbotify/blob/main/CHANGELOG.md',
               },
               {
                 label: 'GitHub Repo',
-                href: 'https://github.com/tjtanjin/react-chatbotify',
+                href: 'https://github.com/react-chatbotify/react-chatbotify',
               },
             ],
           },
