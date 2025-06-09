@@ -10,7 +10,6 @@ on:
     branches: ["master", "development"]
     paths-ignore:
       - "*.md" # ignore all markdown files at root
-      - "*.js" # ignore all js files at root
       - "*.ts" # ignore all ts files at root
       - "assets/**" # ignore root assets
       - "docs/**" # ignore all docs
@@ -24,7 +23,6 @@ on:
     branches: ["master", "development"]
     paths-ignore:
       - "*.md" # ignore all markdown files at root
-      - "*.js" # ignore all js files at root
       - "*.ts" # ignore all ts files at root
       - "assets/**" # ignore root assets
       - "docs/**" # ignore all docs

@@ -100,18 +100,42 @@ const config = {
             label: 'Documentation',
           },
           {
+            label: 'Plugins',
+            to: (process.env.PUBLIC_SITE_ROOT || '') + '/plugins',
+            position: 'left',
+          },
+          {
+            label: 'Themes',
+            to: (process.env.PUBLIC_SITE_ROOT || '') + '/themes',
+            position: 'left',
+          },
+          {
             label: 'Playground',
             to: '/playground',
             position: 'left',
           },
           {
-            label: 'Gallery',
-            to: 'https://gallery.react-chatbotify.com',
+            type: 'dropdown',
+            label: 'About Us',
             position: 'left',
+            items: [
+              {
+                label: 'Our Team',
+                to: (process.env.PUBLIC_SITE_ROOT || '') + '/our-team',
+              },
+              {
+                label: 'Terms of Service',
+                to: (process.env.PUBLIC_SITE_ROOT || '') + '/terms-of-service',
+              },
+              {
+                label: 'Privacy Policy',
+                to: (process.env.PUBLIC_SITE_ROOT || '') + '/privacy-policy',
+              },
+            ],
           },
           {
-            label: 'Contributing',
-            to: 'https://github.com/tjtanjin/react-chatbotify#contributing',
+            label: 'Gallery',
+            to: 'https://gallery.react-chatbotify.com',
             position: 'left',
           },
           {
@@ -120,9 +144,23 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://discord.gg/6R4DK4G5Zh',
-            label: 'Discord',
+            type: 'dropdown',
+            label: 'Community',
             position: 'right',
+            items: [
+              {
+                label: 'Discord',
+                href: 'https://discord.gg/6R4DK4G5Zh',
+              },
+              {
+                label: 'Instagram',
+                href: 'https://instagram.com/react.chatbotify',
+              },
+              {
+                label: 'Twitter (X)',
+                href: 'https://x.com/reactchatbotify',
+              },
+            ],
           },
         ],
       },
