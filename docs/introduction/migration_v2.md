@@ -8,14 +8,15 @@ keywords: [react, chat, chatbot, chatbotify]
 # Migration to v2
 
 ## Foreword
-The **v2 beta release** of React ChatBotify is now available! This update includes significant internal rewrites and changes. The objectives of this **beta release** are to:
-- Onboard users with the new changes early
-- Identify and fix any bugs
-- Gather feedback for improvements
-- Prepare the chatbot for a stable release
-- Lay the foundation for supporting plugins
+The **v2** release of React ChatBotify is now stable! You are strongly encouraged to migrate from [**v1**](https://react-chatbotify/docs/v1) as soon as possible. This update includes significant internal rewrites and changes that bring about a bunch of improvements and powerful features which includes but is not limited to:
+- Plugins
+- Themes
+- LLM Integration
+- Performance Optimizations
+- Hooks
+- Events
 
-Future beta releases are not expected to introduce further breaking changes, as all major changes have been consolidated into this first release. That said, kindly report any bugs encountered as soon as possible on [**discord**](https://discord.gg/6R4DK4G5Zh) or via [**github**](https://github.com/react-chatbotify/react-chatbotify).
+ That said, kindly report any bugs encountered on [**discord**](https://discord.gg/6R4DK4G5Zh) or via [**github**](https://github.com/react-chatbotify/react-chatbotify).
 
 This migration guide is organized by the importance of the changes:
 - Breaking Changes (mandatory to address to prevent library breakage)
@@ -100,6 +101,94 @@ Previously, the `Message` attribute only had 2 required fields (`sender` and `co
 Changes Required:
 - move to [**custom hooks**](/docs/api/hooks) for direct manipulation of `messages` and include required fields
 
+## Post-Beta Breaking Changes
+This section outlines breaking changes introduced in beta versions *after* the initial `v2.0.0-beta.1` release. If you are migrating directly from v1, the changes in the "Breaking Changes" section above are the primary ones to consider, followed by these. If you are updating from an earlier v2 beta version, these changes are crucial for bringing your implementation up to date.
+
+### Asynchronous Operations for Params and Hooks (`v2.0.0-beta.23`)
+To support more complex operations and prevent blocking, several utility functions available through `params` (in flow blocks) and hooks have been made asynchronous.
+
+-   **Change:** Many functions that were previously synchronous are now `async` and return a `Promise`.
+-   **Reason:** This allows these functions to perform operations that might take time (like animations or external calls) and provides a standard way to await their completion if needed.
+-   **Action Required:** You should review your use of the affected functions. If your code relies on an operation being complete before the next line executes, you must now `await` the function call. Ensure the calling function is also `async`.
+
+**Affected `params` functions (passed to flow blocks):**
+The following functions within the `params` object are now `async`:
+*   `params.showToast`
+*   `params.dismissToast`
+*   `params.goToPath`
+*   `params.setTextAreaValue`
+*   `params.toggleChatWindow` (previously `params.openChat` at the time of this change in beta.23, now also async)
+
+**Affected Hook Functions:**
+The following functions returned by their respective hooks are now `async`:
+*   `showToast` (from `useToasts`)
+*   `dismissToast` (from `useToasts`)
+*   `toggleAudio` (from `useAudio`)
+*   `toggleNotifications` (from `useNotifications`)
+*   `toggleVoice` (from `useVoice`)
+*   `toggleChatWindow` (from `useChatWindow`)
+*   `goToPath` (from `useFlow`)
+*   `setTextAreaValue` (from `useTextArea`)
+
+Additionally, if you are creating custom event handlers, you can push Promises into the `event.promises` array for the chatbot to await their resolution.
+
+### Removed `dangerouslySetInnerHtml` from Bubbles (`v2.0.0-beta.31`)
+To streamline core library features and promote safer HTML rendering, the direct HTML injection properties have been deprecated and their functionality moved to a dedicated plugin.
+
+-   **Change:** The `styles.botBubble.dangerouslySetInnerHtml` and `styles.userBubble.dangerouslySetInnerHtml` properties have been removed.
+-   **Reason:** This functionality is now handled by the official [**HTML Renderer Plugin**](https://www.npmjs.com/package/@rcb-plugins/html-renderer). This change encourages a more secure and standardized way of rendering HTML content within messages.
+-   **Action Required:** If you were using `dangerouslySetInnerHtml` to render HTML in messages, you need to:
+    1.  Install the [**HTML Renderer Plugin**](https://www.npmjs.com/package/@rcb-plugins/html-renderer).
+    2.  Add the plugin to the `plugins` prop of your `ChatBot` component.
+    3.  Ensure your messages that require HTML rendering are compatible with how the plugin processes them (typically by ensuring the content is valid HTML).
+
+### Simulated Streaming and Bubble API Changes (`v2.0.0-beta.33`)
+This version introduced changes to improve consistency in how messages are handled, particularly for simulated streaming.
+
+**1. `simStream` Property Renamed**
+   - **Change:** The `simStream` properties within `botBubble` and `userBubble` style configurations have been renamed:
+     - `styles.botBubble.simStream` is now `styles.botBubble.simulateStream`.
+     - `styles.userBubble.simStream` is now `styles.userBubble.simulateStream`.
+   - **Reason:** The new name `simulateStream` offers greater clarity.
+   - **Action Required:** Update these property names in your `styles` prop if you are using them to control default stream simulation behavior for messages defined in blocks.
+
+**2. Behavior of `simulateStream` Style Settings**
+   - **Change:** The `styles.botBubble.simulateStream` and `styles.userBubble.simulateStream` settings are no longer automatically applied to messages injected using the `params.injectMessage` utility function. These style settings now *only* affect messages defined directly via the `message` attribute within a flow block.
+   - **Reason:** This change provides more explicit control. For simulating streams via utility functions, a dedicated function is now available.
+   - **Action Required:** If you previously relied on `styles.botBubble.simulateStream` or `styles.userBubble.simulateStream` to have `params.injectMessage` simulate a stream, you must now use the `params.simulateStreamMessage` utility function instead for those specific messages.
+
+**3. `simStreamChunker` Renamed and Relocated**
+   - **Change:** The `simStreamChunker` data field, which allows custom parsing logic for simulated streams via events, has been:
+     1. Renamed to `simulateStreamChunker`.
+     2. Moved from the `rcb-pre-inject-message` event's `event.detail.data` to the `rcb-start-simulate-stream-message` event's `event.detail.data`.
+   - **Reason:** This aligns the chunker logic with the newly introduced `params.simulateStreamMessage` function and its dedicated start/stop events, centralizing simulated streaming customization.
+   - **Action Required:** If you have event listeners for `rcb-pre-inject-message` that utilized the `simStreamChunker`, you need to:
+     1. Update your listener to target the `rcb-start-simulate-stream-message` event.
+     2. Change your code to access `event.detail.data.simulateStreamChunker` (note the new field name).
+   - **Note:** Plugin developers using Markdown or HTML renderer plugins should ensure they update to version 0.2.0 or higher of those plugins, as they incorporate support for these new events.
+
+### API Function Changes (`v2.0.0-beta.34`)
+Several API functions were updated for consistency and enhanced functionality:
+
+**1. `params.openChat` Renamed to `params.toggleChatWindow`**
+   - **Change:** The `params.openChat` function, used to programmatically open or close the chat window, has been renamed to `params.toggleChatWindow`.
+   - **Reason:** This change was made to align the naming with the `toggleChatWindow` function available in the `useChatWindow` hook, promoting consistency across the API.
+   - **Action Required:** Search your codebase for `params.openChat` and replace all instances with `params.toggleChatWindow`. The functionality remains the same.
+
+**2. Return Value of Message Manipulation Functions**
+   - **Change:** The following functions now return the complete `Message` object instead of just the message `id` (string):
+     - `injectMessage`
+     - `streamMessage`
+     - `simulateStreamMessage`
+     - `removeMessage`
+   - **Reason:** Returning the full `Message` object provides more context and flexibility, allowing developers to immediately access all properties of the message that was injected, streamed, or removed.
+   - **Action Required:** If your code was previously expecting only an `id` (string) as the return value from these functions, you'll need to update it. For example, if you had `const messageId = params.injectMessage(...);`, you should change it to `const messageObject = params.injectMessage(...); const messageId = messageObject.id;` or directly use `messageObject` if you need other properties.
+
+### File Upload Type Change (`v2.0.0-beta.36`)
+To address an issue with file uploads not resetting correctly, the data type for files has been updated.
+- **Change:** The type for file collections (e.g., as accessed via `params.files` if you are inspecting flow parameters, or in event details related to file uploads) has changed from `FileList` to `Array<File>`.
+- **Action Required:** If your custom logic directly interacts with the file list from file upload events or parameters, ensure you update your type definitions and handling to expect an `Array<File>` instead of a `FileList`.
+
 ## Concept Changes
 
 Conceptual changes do not break any existing features, functionalities or appearance, but they will aid your understanding in how the chatbot is designed and possibly help with your implementation.
@@ -109,6 +198,13 @@ Previously, `params` (now `AttributeParams`) were used within predefined dynamic
 
 ### SSR Support Improved
 Previously, using the library in SSR frameworks (e.g. NextJS) involved importing the chatbot dynamically/lazily. This is **no longer needed** in v2 as support for SSR frameworks has been improved and the library now doesn't utilize window before it is defined!
+
+### Message Sender Field Capitalization (`v2.0.0-beta.25`)
+A minor internal change was made to how the `sender` field of a message object is stored.
+
+-   **Change:** The `sender` field (e.g., `message.sender`) now defaults to being fully capitalized (e.g., "bot" is stored as "BOT", "user" as "USER").
+-   **Impact:** This change is primarily for internal consistency. Crucially, the `sender` field is **no longer case-sensitive** when evaluated by the library. For instance, conditions checking `message.sender === 'bot'` will still work as expected even if the stored value is `BOT`.
+-   **Action Required:** None. This is a purely informational note, and no changes are needed in your existing flows or logic that inspects the `sender` field.
 
 ## New Features
 
@@ -169,6 +265,44 @@ Voice inputs can now be configured to be sent as audio files via the `sendAsAudi
 New Additions:
 - Added `sendAsAudio` property to [**`voice`**](/docs/api/settings#voice) section
 
+### Granular Update Functions for Settings and Styles (`v2.0.0-beta.19`)
+To simplify partial updates to settings and styles, new utility functions have been added to their respective hooks.
+
+-   **New Utility Functions:**
+    *   `useSettings()` now provides an `updateSettings(partialSettings)` function.
+    *   `useStyles()` now provides an `updateStyles(partialStyles)` function.
+-   **Purpose:** These functions allow you to update only specific parts of your chatbot's settings or styles. For instance, you can change just the `header.title` in settings without affecting other settings, or update only `chatWindow.backgroundColor` without altering other styles. The provided partial object will be merged with the existing state.
+-   **Benefit:** This offers a more convenient way to make targeted modifications compared to retrieving the full state, manually merging, and then using a `replace` function.
+-   **Usage Example (`updateSettings`):**
+    ```javascript
+    // Assuming you have access to 'updateSettings' from useSettings()
+    // To change only the bot avatar and header title:
+    // updateSettings({
+    //   botBubble: {
+    //     avatar: "new_avatar_url.png"
+    //   },
+    //   header: {
+    //     title: "New Bot Title"
+    //   }
+    // });
+    // Other settings remain untouched.
+    ```
+-   **Note:** For details on the merge behavior (e.g., deep vs. shallow merge), refer to the main documentation for `useSettings` and `useStyles`. These functions are distinct from the `replaceSettings` and `replaceStyles` functions (introduced in `v2.0.0-beta.20`), which are used to replace the entire state object.
+
+### State Replacement Functions for Hooks (`v2.0.0-beta.20`)
+To improve internal architecture and enable future optimizations, the way state is updated via hooks has been refined.
+
+-   **Change:** Hooks like `useSettings`, `useStyles`, `useMessages`, `usePaths`, and `useToasts` no longer directly expose their underlying state setter functions (e.g., `setSettings`, `setStyles`).
+-   **New Utility Functions:** Instead, new functions are provided on these hooks for replacing the entire state:
+    *   `useSettings()` now provides `replaceSettings(newSettings)`
+    *   `useStyles()` now provides `replaceStyles(newStyles)`
+    *   `useMessages()` now provides `replaceMessages(newMessages)`
+    *   `usePaths()` now provides `replacePaths(newPaths)`
+    *   `useToasts()` now provides `replaceToasts(newToasts)`
+-   **Reason:** Directly exposing state setters can sometimes hinder internal library optimizations and is generally not a recommended pattern. These new functions offer a clear and explicit way to replace the entire state for a particular hook.
+-   **Action Required:** If you were previously using a direct state setter from one of these hooks (e.g., `const { settings, setSettings } = useSettings(); setSettings(newCompleteSettingsObject);`), you should update your code to use the corresponding `replace` function (e.g., `const { settings, replaceSettings } = useSettings(); replaceSettings(newCompleteSettingsObject);`). These are designed as drop-in replacements for full state overwrites.
+-   **Note:** For more granular or additive changes (like adding a single message or updating a specific setting), prefer other utility functions provided by the hooks (e.g., `injectMessage` from `useMessages`, or `updateSettings` from `useSettings`).
+
 ## Summary
 For a quick upgrade, follow these succinct instructions:
 - Move styles from **BotOptions** to the new [**`styles`**](/docs/concepts/styles) prop.
@@ -179,4 +313,7 @@ For a quick upgrade, follow these succinct instructions:
 - Rename `render` attribute in blocks to `component` attribute.
 - Rename `sendAttachmentOutput` to `sendFileName` **and** move it from `chatInput` section to `fileAttachment` section.
 - Rename `useAdvancedBotOptions` to `useAdvancedSettings` in `advance` section under `settings` (previously `options`).
+- Rename all instances of `simStream` to `simulateStream`.
+- Rename `params.openChat` to `params.toggleChatWindow`
+- Replace `dangerouslySetInnerHtml` with [**HTML Renderer Plugin**](https://www.npmjs.com/package/@rcb-plugins/html-renderer)
 - Test the chatbot for any visual changes (for those using custom components) and update styles if necessary.
