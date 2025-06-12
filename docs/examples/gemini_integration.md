@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Gemini Integration
 
-The following is an example showing how to integrate [**Google Gemini**](https://ai.google.dev/gemini-api/docs) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example also taps on the [**GeminiProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/Gemini.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
+The following is an example showing how to integrate [**Google Gemini**](https://ai.google.dev/gemini-api/docs) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example also taps on the [**GeminiProvider**](https://github.com/React-ChatBotify-Plugins/llm-connector/blob/main/docs/providers/Gemini.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
 
 :::tip
 
@@ -53,7 +53,7 @@ const MyChatBot = () => {
 		gemini: {
 			llmConnector: {
 				// provider configuration guide:
-				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/Gemini.md
+				// https://github.com/React-ChatBotify-Plugins/llm-connector/blob/main/docs/providers/Gemini.md
 				provider: new GeminiProvider({
 					mode: 'direct',
 					model: 'gemini-1.5-flash',

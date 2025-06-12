@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # OpenAI Integration
 
-The following is an example showing how to integrate [**OpenAI**](https://platform.openai.com/) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example also taps on the [**OpenaiProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/OpenAI.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
+The following is an example showing how to integrate [**OpenAI**](https://platform.openai.com/) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example also taps on the [**OpenaiProvider**](https://github.com/React-ChatBotify-Plugins/llm-connector/blob/main/docs/providers/OpenAI.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
 
 :::tip
 
@@ -53,7 +53,7 @@ const MyChatBot = () => {
 		openai: {
 			llmConnector: {
 				// provider configuration guide:
-				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/OpenAI.md
+				// https://github.com/React-ChatBotify-Plugins/llm-connector/blob/main/docs/providers/OpenAI.md
 				provider: new OpenaiProvider({
 					mode: 'direct',
 					model: 'gpt-4.1-nano',

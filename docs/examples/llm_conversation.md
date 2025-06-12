@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # LLM Conversation
 
-The following is an example showing how to integrate in-browser models (e.g. via [**WebLlm**](https://webllm.mlc.ai/)) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example taps on the [**WebLlmProvider**](https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/WebLlm.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
+The following is an example showing how to integrate in-browser models (e.g. via [**WebLlm**](https://webllm.mlc.ai/)) into React ChatBotify. It leverages on the [**LLM Connector Plugin**](https://www.npmjs.com/package/@rcb-plugins/llm-connector), which is maintained separately on the [**React ChatBotify Plugins**](https://github.com/orgs/React-ChatBotify-Plugins) organization. This example taps on the [**WebLlmProvider**](https://github.com/React-ChatBotify-Plugins/llm-connector/blob/main/docs/providers/WebLlm.md), which ships by default with the LLM Connector Plugin. If you require support with the plugin, please reach out to support on the [**plugins discord**](https://discord.gg/J6pA4v3AMW) instead.
 
 :::tip
 
@@ -43,7 +43,7 @@ const MyChatBot = () => {
 		webllm: {
 			llmConnector: {
 				// provider configuration guide:
-				// https://github.com/React-ChatBotify-Plugins/llm-connnector/blob/main/docs/providers/WebLlm.md
+				// https://github.com/React-ChatBotify-Plugins/llm-connector/blob/main/docs/providers/WebLlm.md
 				provider: new WebLlmProvider({
 					model: 'Qwen2-0.5B-Instruct-q4f16_1-MLC',
 				}),
