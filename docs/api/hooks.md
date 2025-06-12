@@ -191,6 +191,7 @@ The `useChatWindow` hook allows you to track and manage the chatbot's window sta
 | toggleChatWindow    | `async function` | **active (optional)** - `boolean` indicating desired end state | Toggles the chat window open or close.                   |
 | toggleIsBotTyping   | `async function` | **active (optional)** - `boolean` indicating desired end state | Toggles the bot typing indicator.                        |
 | scrollToBottom      | `function`       | **duration (optional)**: `number` representing duration in milliseconds to scroll, defaults to 0 | Scrolls to the bottom of the chat window.                |
+| getIsChatBotVisible | `function`       | -         | Returns `true` if chatbot is visible, `false` otherwise   |
 
 
 #### Code Example
