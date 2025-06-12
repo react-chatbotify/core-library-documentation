@@ -12,7 +12,6 @@ on:
       - "*.md" # ignore all markdown files at root
       - "*.ts" # ignore all ts files at root
       - "assets/**" # ignore root assets
-      - "docs/**" # ignore all docs
       - "scripts/**" # ignore all scripts
       - "ssr/**" # ignore ssr files
       - ".github/**/*.md" # ignore markdown files for .github
@@ -25,7 +24,6 @@ on:
       - "*.md" # ignore all markdown files at root
       - "*.ts" # ignore all ts files at root
       - "assets/**" # ignore root assets
-      - "docs/**" # ignore all docs
       - "scripts/**" # ignore all scripts
       - "ssr/**" # ignore ssr files
       - ".github/**/*.md" # ignore markdown files for .github
