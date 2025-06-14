@@ -63,7 +63,7 @@ const config = {
         logo: {
           alt: 'React ChatBotify Logo',
           src: 'img/react-chatbotify.png',
-          href: 'https://react-chatbotify.com'
+          href: process.env.PUBLIC_SITE_ROOT || '/',
         },
         items: [
           {
