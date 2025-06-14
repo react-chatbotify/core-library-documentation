@@ -10,6 +10,11 @@
 /build
 *.tgz
 
+# env
+.env
+.env.*
+!.env.template
+
 # misc
 .DS_Store
 .env.local
