@@ -11,7 +11,7 @@ The following is an example for rendering markdown messages. It leverages on the
 
 :::tip
 
-If you're looking to render html markup messages, you may refer to the [**html render example**](/docs/examples/html_render.md) instead.
+If you're looking to render html markup messages, you may refer to the [**html render example**](/examples/html_render.md) instead.
 
 :::
 

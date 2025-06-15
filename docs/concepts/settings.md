@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Settings
 
-The chatbot provides a [**`settings`**](/docs/api/settings) prop that empowers you to tweak the **features and functionalities** of your chatbot. Within `settings`, you can customize the chatbot to align with your specific needs and preferences such as disabling notifications or enabling audio.
+The chatbot provides a [**`settings`**](/api/settings) prop that empowers you to tweak the **features and functionalities** of your chatbot. Within `settings`, you can customize the chatbot to align with your specific needs and preferences such as disabling notifications or enabling audio.
 
 The `settings` prop is an object that contains `sections` (which in turn contains `properties`) and they may be passed to the `ChatBot` in the form of
 `section: {property: value}` as shown in the examples below:
@@ -20,7 +20,7 @@ The `settings` prop is an object that contains `sections` (which in turn contain
 
 :::tip Tip
 
-If any of the explanations or usages are unclear to you, you may always reference the [**default settings**](/docs/api/settings) for an example.
+If any of the explanations or usages are unclear to you, you may always reference the [**default settings**](/api/settings) for an example.
 
 :::
 
@@ -37,9 +37,9 @@ Within `settings`, configurable fields are grouped into different **sections**, 
 - **FileAttachment**: Configuration for chatbot file attachments.
 - **Notification**: Configuration for chatbot notifications.
 
-For the full list of available sections, you may refer to the [**API documentation**](/docs/api/settings#sections).
+For the full list of available sections, you may refer to the [**API documentation**](/api/settings#sections).
 
-Each section contains distinct properties that provide granular control over the behavior of the chatbot. These properties are extensively documented in the [**API documentation for settings**](/docs/api/settings), providing comprehensive details and guidance on customization. Below is an example demonstrating how **properties** within **sections** can be customized. Experiment with it!
+Each section contains distinct properties that provide granular control over the behavior of the chatbot. These properties are extensively documented in the [**API documentation for settings**](/api/settings), providing comprehensive details and guidance on customization. Below is an example demonstrating how **properties** within **sections** can be customized. Experiment with it!
 
 ```jsx live noInline title=MyComponent.js
 const MyComponent = () => {

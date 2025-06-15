@@ -73,7 +73,7 @@ It is a common mistake to import these custom hooks from a component outside of 
 :::
 
 :::tip Tip
-An extensive example featuring how various hooks may be used can be found [**here**](/docs/examples/custom_hooks).
+An extensive example featuring how various hooks may be used can be found [**here**](/examples/custom_hooks).
 :::
 
 ## Overview
@@ -273,11 +273,11 @@ The `useMessages` hook allows you to track and manage the chatbot's messages.
 #### Return Values
 | Name                  | Type             | Parameter                                                   | Description                                                                                                                                          |
 |-----------------------|------------------|-------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| injectMessage         | `async function` | Refer [here](/docs/api/params#injectmessage)                | A utility function used to inject a message into the chat, identical to `params.injectMessage`.                                                      |
-| simulateStreamMessage | `async function` | Refer [here](/docs/api/params#simulatestreammessage)        | A utility function used to simulate streaming of messages into the chat, identical to `params.simulateStreamMessage`.                                |
-| streamMessage         | `async function` | Refer [here](/docs/api/params#streammessage)                | A utility function used to stream messages into the chat, identical to `params.streamMessage`.                                                       |
-| endStreamMessage      | `async function` | Refer [here](/docs/api/params#endstreammessage)             | A utility function used to indicate the end of an existing message stream, identical to `params.endMessageStream`.                                   |
-| removeMessage         | `async function` | Refer [here](/docs/api/params#removemessage)                | A utility function used to remove a message from the chat, identical to `params.removeMessage`.                                                      |
+| injectMessage         | `async function` | Refer [here](/api/params#injectmessage)                | A utility function used to inject a message into the chat, identical to `params.injectMessage`.                                                      |
+| simulateStreamMessage | `async function` | Refer [here](/api/params#simulatestreammessage)        | A utility function used to simulate streaming of messages into the chat, identical to `params.simulateStreamMessage`.                                |
+| streamMessage         | `async function` | Refer [here](/api/params#streammessage)                | A utility function used to stream messages into the chat, identical to `params.streamMessage`.                                                       |
+| endStreamMessage      | `async function` | Refer [here](/api/params#endstreammessage)             | A utility function used to indicate the end of an existing message stream, identical to `params.endMessageStream`.                                   |
+| removeMessage         | `async function` | Refer [here](/api/params#removemessage)                | A utility function used to remove a message from the chat, identical to `params.removeMessage`.                                                      |
 | messages            | `Array<Message>`     | -        |Array containing all messages currently shown in the chatbot.                  |
 | replaceMessages       | `function`  | **newMessages (required)** - `Message[]` to replace chat with | Directly replaces the current messages with provided messages.  |
 
@@ -328,7 +328,7 @@ const MyNestedComponent = () => {
 ### useOnRcbEvent
 
 #### Description
-The `useOnRcbEvent` hook allows you to register a chatbot event with its corresponding handler. It accepts 2 parameters, the first being a `RcbEvent` (provided as an `enum` export by the library) and the second being the corresponding event handler. Note that the hook does not return any value since it simply registers an event. This is **commonly used in plugins** which rely on listening on [**events**](/docs/api/events) and taking actions via [**hooks**](/docs/api/hooks).
+The `useOnRcbEvent` hook allows you to register a chatbot event with its corresponding handler. It accepts 2 parameters, the first being a `RcbEvent` (provided as an `enum` export by the library) and the second being the corresponding event handler. Note that the hook does not return any value since it simply registers an event. This is **commonly used in plugins** which rely on listening on [**events**](/api/events) and taking actions via [**hooks**](/api/hooks).
 
 #### Code Example
 ```jsx
@@ -359,7 +359,7 @@ The `usePaths` hook allows you to track and manage the chatbot's paths.
 |--------------|------------------|-----------|-------------------------------------------------------------------------------------------------------------|
 | getCurrPath  | `function`       | -         | Retrieves the current path of the user.                                                                     |
 | getPrevPath  | `function`       | -         | Retrieves the previous path of the user.                                                                    |
-| goToPath     | `function`       | Refer [here](/docs/api/params#gotopath) | Sends the user to a specified path, identical to `params.goToPath`.                        |
+| goToPath     | `function`       | Refer [here](/api/params#gotopath) | Sends the user to a specified path, identical to `params.goToPath`.                        |
 | paths        | `Array<string>`  | -         | Array containing all paths the user has taken in order.                                                     |
 | replacePaths | `function`       | **newPaths (required)** - `string[]` containing paths to replace with | Directly replaces the current paths with provided paths (hardly a reason to do this, think twice).          |
 
@@ -460,7 +460,7 @@ The `useTextArea` hook allows you to track and manage the chatbot's text area fi
 | textAreaSensitiveMode       | `boolean`        | -         | Indicates if the text area is in sensitive mode.                                                 |
 | toggleTextAreaSensitiveMode | `function`       | **active (optional)** - `boolean` indicating desired end state | Toggles the text area sensitive mode.                                                            |
 | getTextAreaValue            | `function`       | -         | Retrieves the string value inside the text area.                                                 |
-| setTextAreaValue            | `async function` | Refer [here](/docs/api/params#settextareavalue) | Sets the value inside the text area, identical to `params.setTextAreaValue`.         |
+| setTextAreaValue            | `async function` | Refer [here](/api/params#settextareavalue) | Sets the value inside the text area, identical to `params.setTextAreaValue`.         |
 | focusTextArea               | `function`       | -         | Focuses on the text area.                                                                        |
 | blurTextArea                | `function`       | -         | Blurs (lose focus of) the text area.                                                             |
 
@@ -491,8 +491,8 @@ The `useToasts` hook allows you to track and manage the chatbot's toasts.
 #### Return Values
 | Name          | Type             | Parameter                                              | Description                                                                                   |
 |---------------|------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| showToast     | `async function` | Refer [here](/docs/api/params#showtoast)              | Shows a toast in chat, identical to `params.showToast`.                                       |
-| dismissToast  | `async function` | Refer [here](/docs/api/params#dismisstoast)           | Dismisses a toast from chat, identical to `params.dismissToast`.                              |
+| showToast     | `async function` | Refer [here](/api/params#showtoast)              | Shows a toast in chat, identical to `params.showToast`.                                       |
+| dismissToast  | `async function` | Refer [here](/api/params#dismisstoast)           | Dismisses a toast from chat, identical to `params.dismissToast`.                              |
 | toasts        | `Array<Toast>`   | -                                                      | Array containing all toasts currently shown in the chatbot.                                   |
 | replaceToasts | `function`       | **newToasts (required)** - `Toast[]` to replace with                                                      | Directly replaces the current toasts with provided toasts.                                    |
 

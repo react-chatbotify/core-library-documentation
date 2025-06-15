@@ -274,7 +274,7 @@ Properties here provide accessible labels for various chatbot interface elements
 
 ### audio
 
-Properties here handle the playing of audio for messages sent by the bot. When toggled on, messages sent by the bot will be read out. Note that audio is not supported for messages sent in [real-time stream](/docs/examples/real_time_stream).
+Properties here handle the playing of audio for messages sent by the bot. When toggled on, messages sent by the bot will be read out. Note that audio is not supported for messages sent in [real-time stream](/examples/real_time_stream).
 
 | Name                       | Type                            | Default                                     | Description                                                                                                                    |
 | -------------------------- | ------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |

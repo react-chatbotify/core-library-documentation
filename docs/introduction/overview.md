@@ -68,4 +68,4 @@ React ChatBotify offers a wide array of features designed to enhance your chatbo
 
 These features, **along with many others**, empower developers to create highly interactive and personalized chatbot experiences tailored to their specific application requirements.
 
-Now that you've a rough idea on what the chatbot can do, we'll learn about the core concept of [**conversations**](/docs/concepts/conversations), which determines the interactions between your users and your chatbot!
+Now that you've a rough idea on what the chatbot can do, we'll learn about the core concept of [**conversations**](/concepts/conversations), which determines the interactions between your users and your chatbot!

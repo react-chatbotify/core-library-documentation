@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Custom Events
 
-The following is an example for using custom events, which you can listen and respond to for running your application's custom logic. The full list of events can be found [**here**](/docs/api/events) but for this example, we'll only be using the [**`RcbUserSubmitTextEvent`**](/docs/api/events#rcbusersubmittextevent). Specifically, we'll **block user submissions** when the submitted text input contains the character `hello`. Give it a try below!
+The following is an example for using custom events, which you can listen and respond to for running your application's custom logic. The full list of events can be found [**here**](/api/events) but for this example, we'll only be using the [**`RcbUserSubmitTextEvent`**](/api/events#rcbusersubmittextevent). Specifically, we'll **block user submissions** when the submitted text input contains the character `hello`. Give it a try below!
 
 ```jsx live noInline title=MyChatBot.js
 const MyChatBot = () => {

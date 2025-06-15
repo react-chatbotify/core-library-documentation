@@ -11,7 +11,7 @@ The following is an example showing how to integrate [**OpenAI**](https://platfo
 
 :::tip
 
-The plugin also comes with other default providers, which you can try out in the [**LLM Conversation Example**](/docs/examples/llm_conversation.md) and [**Gemini Integration Example**](/docs/examples/gemini_integration.md).
+The plugin also comes with other default providers, which you can try out in the [**LLM Conversation Example**](/examples/llm_conversation.md) and [**Gemini Integration Example**](/examples/gemini_integration.md).
 
 :::
 

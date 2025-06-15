@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Plugins
 
-A newly added feature in **v2** of the chatbot, the `plugins` prop provides users with the means to install and use custom plugins. Similar to [**themes**](/docs/concepts/themes), the browsing of plugins can be done on [**React ChatBotify Gallery**](https://react-chatbotify.com/plugins), where you will find both **official and community plugins**.
+A newly added feature in **v2** of the chatbot, the `plugins` prop provides users with the means to install and use custom plugins. Similar to [**themes**](/concepts/themes), the browsing of plugins can be done on [**React ChatBotify Gallery**](https://react-chatbotify.com/plugins), where you will find both **official and community plugins**.
 
 ## Overview
 
@@ -25,7 +25,7 @@ For instructions on using plugins (both official or community-based), please ref
 
 :::tip Tip
 
-Most plugins tend to rely on specific chatbot [**settings**](/docs/api/settings) for their logic (e.g. [**events**](/docs/api/events)). Ideally, plugin developers should provide auto-config options out of the box. If not, make sure you read the plugin's setup instructions in detail to understand which settings are required to be enabled!
+Most plugins tend to rely on specific chatbot [**settings**](/api/settings) for their logic (e.g. [**events**](/api/events)). Ideally, plugin developers should provide auto-config options out of the box. If not, make sure you read the plugin's setup instructions in detail to understand which settings are required to be enabled!
 
 :::
 

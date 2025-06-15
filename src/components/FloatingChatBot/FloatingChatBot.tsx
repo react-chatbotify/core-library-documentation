@@ -69,13 +69,13 @@ const FloatingChatBot = () => {
 				let link = "";
 				switch (params.userInput) {
 				case "Quickstart":
-					link = "/docs/introduction/quickstart/";
+					link = "/docs/v2/introduction/quickstart/";
 					break;
 				case "API Docs":
-					link = "/docs/api/settings";
+					link = "/docs/v2/api/settings";
 					break;
 				case "Examples":
-					link = "/docs/examples/basic_form";
+					link = "/docs/v2/examples/basic_form";
 					break;
 				case "Github":
 					link = "https://github.com/react-chatbotify/react-chatbotify/";

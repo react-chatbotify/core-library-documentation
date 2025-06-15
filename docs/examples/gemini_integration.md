@@ -11,7 +11,7 @@ The following is an example showing how to integrate [**Google Gemini**](https:/
 
 :::tip
 
-The plugin also comes with other default providers, which you can try out in the [**LLM Conversation Example**](/docs/examples/llm_conversation.md) and [**OpenAI Integration Example**](/docs/examples/openai_integration.md).
+The plugin also comes with other default providers, which you can try out in the [**LLM Conversation Example**](/examples/llm_conversation.md) and [**OpenAI Integration Example**](/examples/openai_integration.md).
 
 :::
 

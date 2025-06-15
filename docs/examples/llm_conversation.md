@@ -11,7 +11,7 @@ The following is an example showing how to integrate in-browser models (e.g. via
 
 :::tip
 
-The plugin also comes with other default providers, which you can try out in the [**OpenAI Integration Example**](/docs/examples/openai_integration.md) and [**Gemini Integration Example**](/docs/examples/gemini_integration.md).
+The plugin also comes with other default providers, which you can try out in the [**OpenAI Integration Example**](/examples/openai_integration.md) and [**Gemini Integration Example**](/examples/gemini_integration.md).
 
 :::
 

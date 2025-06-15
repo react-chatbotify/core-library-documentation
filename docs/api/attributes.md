@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Attributes
 
-This page documents all the attributes that may be used in a conversation [**Block**](/docs/concepts/conversations#block). Take note that [**Attributes**](/docs/concepts/conversations#attributes) are divided into **pre-processing** and **post-processing** as listed in the table below. For a quick look at the usage of attributes, you may refer to the **sample flow** in the dropdown which uses `message` and `path`.
+This page documents all the attributes that may be used in a conversation [**Block**](/concepts/conversations#block). Take note that [**Attributes**](/concepts/conversations#attributes) are divided into **pre-processing** and **post-processing** as listed in the table below. For a quick look at the usage of attributes, you may refer to the **sample flow** in the dropdown which uses `message` and `path`.
 
 <details>
 <summary>Click to view sample flow</summary>
@@ -27,13 +27,13 @@ const flow = {
 
 :::tip Tip
 
-Note that as of `v2`, **all attributes** support functions which can access [`params`](/docs/api/params). The sample flow above shows how the [`message`](/docs/api/attributes#message) attribute uses [`params`](/docs/api/params) to retrieve the user input.
+Note that as of `v2`, **all attributes** support functions which can access [`params`](/api/params). The sample flow above shows how the [`message`](/api/attributes#message) attribute uses [`params`](/api/params) to retrieve the user input.
 
 :::
 
 ## Overview
 
-Below is a list of available attributes along with a brief description for each of them. Note that for **all attributes**, if `function` is used, it optionally accepts [**params**](/docs/api/params) as a parameter.
+Below is a list of available attributes along with a brief description for each of them. Note that for **all attributes**, if `function` is used, it optionally accepts [**params**](/api/params) as a parameter.
 
 | Name | Type | Processing | Description |
 |------|------|------------|-------------|
@@ -51,12 +51,12 @@ Below is a list of available attributes along with a brief description for each 
 Note that if you choose to pass in a `function` for attributes, you may choose to have it `sync` or `async` depending on your use case.
 
 :::tip Tip
-If you're unsure of any of the attributes explained on this page, it might help to check out the [**live examples**](/docs/examples/basic_form) to see how these attributes are being used.
+If you're unsure of any of the attributes explained on this page, it might help to check out the [**live examples**](/examples/basic_form) to see how these attributes are being used.
 :::
 
 ## Pre-processing Attributes
 
-Below is a detailed description on the usage of each **pre-processing** attribute (processed upon entering a [**block**](/docs/concepts/conversations/#block) and before user input).
+Below is a detailed description on the usage of each **pre-processing** attribute (processed upon entering a [**block**](/concepts/conversations/#block) and before user input).
 
 ---
 
@@ -194,7 +194,7 @@ start: {
 ### chatDisabled
 
 #### Description
-Indicates whether chat input is enabled or disabled for this block (overrides the chatInput section in [**Configurations**](/docs/api/settings#chatinput)).
+Indicates whether chat input is enabled or disabled for this block (overrides the chatInput section in [**Configurations**](/api/settings#chatinput)).
 
 #### Type
 `boolean` | `function`
@@ -245,7 +245,7 @@ start: {
 
 ## Post-processing Attributes
 
-Below is a detailed description on the usage of each **post-processing** attribute (processed upon user input and before exiting a [**block**](/docs/concepts/conversations/#block)).
+Below is a detailed description on the usage of each **post-processing** attribute (processed upon user input and before exiting a [**block**](/concepts/conversations/#block)).
 
 ---
 
@@ -280,7 +280,7 @@ Function that is called after file upload.
 `function`
 
 #### Details
-- It simply accepts a function (use [`params`](/docs/api/params) to access the `files` uploaded).
+- It simply accepts a function (use [`params`](/api/params) to access the `files` uploaded).
 
 #### Usages
 - `function: (params) => console.log(params.files)`

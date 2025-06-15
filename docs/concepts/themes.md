@@ -23,7 +23,7 @@ Try stacking multiple of your favorite themes together, the chatbot will resolve
 
 :::
 
-Unlike [**`settings`**](/docs/api/settings) and [**`styles`**](/docs/api/styles), there are no sections to configure for themes apart from the 3 fields above. Below is an example demonstrating how you may stack themes with the chatbot. Experiment with it!
+Unlike [**`settings`**](/api/settings) and [**`styles`**](/api/styles), there are no sections to configure for themes apart from the 3 fields above. Below is an example demonstrating how you may stack themes with the chatbot. Experiment with it!
 
 ```jsx live noInline title=MyComponent.js
 const MyComponent = () => {
@@ -54,6 +54,6 @@ render(
 
 :::tip Tip
 
-Check out more examples for [**single theme**](/docs/examples/single_theme) and [**multiple themes**](/docs/examples/multiple_themes)!
+Check out more examples for [**single theme**](/examples/single_theme) and [**multiple themes**](/examples/multiple_themes)!
 
 :::

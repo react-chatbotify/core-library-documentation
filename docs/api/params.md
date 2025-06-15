@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Params
 
-This page documents all the parameters that may be used in an [**Attribute**](/docs/concepts/conversations#attributes). Parameters provide you with contextual detail or utility functions to base your decisions on and interact with the chatbot.
+This page documents all the parameters that may be used in an [**Attribute**](/concepts/conversations#attributes). Parameters provide you with contextual detail or utility functions to base your decisions on and interact with the chatbot.
 
 ## Overview
 
@@ -20,9 +20,9 @@ The following table provides details about the parameters available for attribut
 | prevPath        | `string`            | All Attributes    | Represents the previous path in the chat (can be null if no previous path exists).                                                 |
 | goToPath        | `async function`          | All Attributes    | A utility function for navigating to another block.                                                                                |
 | injectMessage   | `async function`    | All Attributes    | A utility function to inject a message into the chat.   |
-| simulateStreamMessage   | `async function`    | All Attributes    | Simulates streaming a message into the chat. You can refer to the [**Simulated Stream**](/docs/examples/simulated_stream) example.          |
-| streamMessage   | `async function`    | All Attributes    | Streams a message into the chat. You can refer to the [**Real-Time Stream**](/docs/examples/real_time_stream) example.          |
-| endStreamMessage   | `async function`    | All Attributes    | Ends an existing message stream. You can refer to the [**Real-Time Stream**](/docs/examples/real_time_stream) example.          |
+| simulateStreamMessage   | `async function`    | All Attributes    | Simulates streaming a message into the chat. You can refer to the [**Simulated Stream**](/examples/simulated_stream) example.          |
+| streamMessage   | `async function`    | All Attributes    | Streams a message into the chat. You can refer to the [**Real-Time Stream**](/examples/real_time_stream) example.          |
+| endStreamMessage   | `async function`    | All Attributes    | Ends an existing message stream. You can refer to the [**Real-Time Stream**](/examples/real_time_stream) example.          |
 | removeMessage   | `async function`    | All Attributes    | Removes a message from the chat by message id.          |
 | setTextAreaValue| `async function`          | All Attributes    | Sets a value directly within the text area.                                                                                        |
 | showToast       | `async function`          | All Attributes    | Shows a toast that is dismissed after a duration or on user click.                                                                                                          |
@@ -38,13 +38,13 @@ If you are using functions from `params`, do remember that they are `async` and 
 
 :::tip Tip
 
-Do consider checking out the [**live examples**](/docs/examples/basic_form) if you need more clarity on the usages of `params`.
+Do consider checking out the [**live examples**](/examples/basic_form) if you need more clarity on the usages of `params`.
 
 :::
 
 ## Param Details
 
-Below is a detailed description on the usage of each parameter that may be used in an [**attribute**](/docs/api/attributes).
+Below is a detailed description on the usage of each parameter that may be used in an [**attribute**](/api/attributes).
 
 ---
 
@@ -139,7 +139,7 @@ start: {
 ### simulateStreamMessage
 
 #### Description
-Simulates streaming a message into the chat. This works by taking the entire text string and splitting it up to insert into the chat bubbble. For a detailed example on how to use this parameter, refer to the [**simulated stream**](/docs/examples/simulated_stream) example.
+Simulates streaming a message into the chat. This works by taking the entire text string and splitting it up to insert into the chat bubbble. For a detailed example on how to use this parameter, refer to the [**simulated stream**](/examples/simulated_stream) example.
 
 #### Type
 `async function`
@@ -163,7 +163,7 @@ start: {
 ### streamMessage
 
 #### Description
-Streams a message into the chat. This works by replacing the last sent message from the `sender` with the `content` specified. For a detailed example on how to use this parameter, refer to the [**real-time stream**](/docs/examples/real_time_stream) example.
+Streams a message into the chat. This works by replacing the last sent message from the `sender` with the `content` specified. For a detailed example on how to use this parameter, refer to the [**real-time stream**](/examples/real_time_stream) example.
 
 #### Type
 `async function`
@@ -319,7 +319,7 @@ start: {
 ### files
 
 #### Description
-List of files uploaded by the user (only present in the [**file attribute**](/docs/api/attributes#file)).
+List of files uploaded by the user (only present in the [**file attribute**](/api/attributes#file)).
 
 #### Type
 `Array<File>`

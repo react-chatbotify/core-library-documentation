@@ -11,7 +11,7 @@ The following is an example of a conversation meant to showcase the possibility 
 
 :::tip
 
-A slightly more advanced example involving stream responses from LLM models can be found [**here**](/docs/examples/real_time_stream.md).
+A slightly more advanced example involving stream responses from LLM models can be found [**here**](/examples/real_time_stream.md).
 
 :::
 

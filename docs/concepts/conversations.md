@@ -64,7 +64,7 @@ Sometimes used interchangeably with a path (as conversations paths from one bloc
 conversation and contains attributes (e.g. `message`, `path`).
 
 Note that the type of attributes available for pre-processing and post-processing are **different**. In the `start` block below, `message` is an attribute that belongs to
-**pre-processing** while `path` is an attribute that belongs to **post-processing**. The list of attributes along with their use and categorisation is covered below and may also be found in the [**API documentation**](/docs/api/attributes).
+**pre-processing** while `path` is an attribute that belongs to **post-processing**. The list of attributes along with their use and categorisation is covered below and may also be found in the [**API documentation**](/api/attributes).
 
 ```jsx
 start: {
@@ -75,7 +75,7 @@ start: {
 
 ## Attributes
 
-Attributes defines the various actions that can be taken within a specific block of conversation between the bot and the user. They are categorised into [**pre-processing attributes**](/docs/api/attributes#pre-processing-attributes) which runs before a user input and [**post-processing attributes**](/docs/api/attributes#post-processing-attributes) which runs after a user input. The following are considered as user input:
+Attributes defines the various actions that can be taken within a specific block of conversation between the bot and the user. They are categorised into [**pre-processing attributes**](/api/attributes#pre-processing-attributes) which runs before a user input and [**post-processing attributes**](/api/attributes#post-processing-attributes) which runs after a user input. The following are considered as user input:
 
 - User sends a message in chat (either by typing/voice)
 - User selects an option provided by the bot
@@ -102,7 +102,7 @@ The following attributes are processed after user input:
 - file
 - path
 
-To understand the specifics and how to utilize each attribute, you can consult the [**API documentation for attributes**](/docs/api/attributes). You have the freedom to include **any combination** of these attributes in a block, whether it's all of them, some of them, or none at all. It's important to note that the attributes are handled in the **order they are stated**, except for the `path` attribute, which is always **processed last** during post-processing, if it exists.
+To understand the specifics and how to utilize each attribute, you can consult the [**API documentation for attributes**](/api/attributes). You have the freedom to include **any combination** of these attributes in a block, whether it's all of them, some of them, or none at all. It's important to note that the attributes are handled in the **order they are stated**, except for the `path` attribute, which is always **processed last** during post-processing, if it exists.
 
 In the provided snippet of the `end` block, both the `message` and `chatDisabled` attributes are categorized under pre-processing. Since `message` is declared first, it will be processed before `chatDisabled`.
 
@@ -147,7 +147,7 @@ end: {
 }
 ```
 
-For details and usage on each of these parameters, you may consult the [**API documentation for params**](/docs/api/params).
+For details and usage on each of these parameters, you may consult the [**API documentation for params**](/api/params).
 
 ## Message
 
@@ -157,7 +157,7 @@ For details and usage on each of these parameters, you may consult the [**API do
   </div>
 </div>
 
-Not to be confused with `message` from the section on [**Attributes**](/docs/concepts/conversations#attributes), the `Message` component here represents the interactions between the user and the bot. Every element in the chatbot body (including custom components) are considered a Message (as **outlined in red** on the image above). Within a message you will find **5 required properties** and **2 optional properties**: 
+Not to be confused with `message` from the section on [**Attributes**](/concepts/conversations#attributes), the `Message` component here represents the interactions between the user and the bot. Every element in the chatbot body (including custom components) are considered a Message (as **outlined in red** on the image above). Within a message you will find **5 required properties** and **2 optional properties**: 
 
 - id **(required)** - an auto-generated uuidv4 `string`, uniquely identifying a message
 - content **(required)** - a `string` or `JSX.Element`, representing the content of the message
@@ -169,7 +169,7 @@ Not to be confused with `message` from the section on [**Attributes**](/docs/con
 
 :::info Info
 
-For manipulating messages, it is recommended that you utilize `injectMessage`, `simulateStreamMessage` and `streamMessage` provided in [**params**](/docs/api/params#injectmessage) or [**hooks**](/docs/api/hooks#usemessages). If you are directly manipulating the `messages` array (not recommended), which is possible via `replaceMessages` in the [`useMessages`](/docs/api/hooks#usemessages) hook, you need to specify **at least the 5 required fields** yourself.
+For manipulating messages, it is recommended that you utilize `injectMessage`, `simulateStreamMessage` and `streamMessage` provided in [**params**](/api/params#injectmessage) or [**hooks**](/api/hooks#usemessages). If you are directly manipulating the `messages` array (not recommended), which is possible via `replaceMessages` in the [`useMessages`](/api/hooks#usemessages) hook, you need to specify **at least the 5 required fields** yourself.
 
 :::
 
@@ -189,7 +189,7 @@ Toasts are strictly speaking not essential for chatbot conversations. However, t
 
 :::info Info
 
-For manipulating toasts, it is recommended that you utilize `showToast` and `dismissToast` which are provided in [**params**](/docs/api/params#showtoast) or [**hooks**](/docs/api/hooks#useToasts). If you are directly manipulating the `toasts` array (not recommended), which is possible via the [`useToasts`](/docs/api/hooks#usetoast) hook, you need to specify **at least the 2 required fields** yourself.
+For manipulating toasts, it is recommended that you utilize `showToast` and `dismissToast` which are provided in [**params**](/api/params#showtoast) or [**hooks**](/api/hooks#useToasts). If you are directly manipulating the `toasts` array (not recommended), which is possible via the [`useToasts`](/api/hooks#usetoast) hook, you need to specify **at least the 2 required fields** yourself.
 
 :::
 

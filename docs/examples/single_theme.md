@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Single Theme
 
-The following is an example of configuring the chatbot with a single `terminal` theme. For multiple themes, you may look at this [**example**](/docs/examples/multiple_themes). You can experiment with various themes available for browsing at [**React ChatBotify Gallery**](https://react-chatbotify.com/themes).
+The following is an example of configuring the chatbot with a single `terminal` theme. For multiple themes, you may look at this [**example**](/examples/multiple_themes). You can experiment with various themes available for browsing at [**React ChatBotify Gallery**](https://react-chatbotify.com/themes).
 
 ```jsx live noInline title=MyChatBot.js
 const MyChatBot = () => {

@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Styles
 
-The chatbot provides a [**`styles`**](/docs/api/styles) prop that provides you with the means to alter the appearance of your chatbot. Within `styles`, you can customize various components of your chatbot to fit your desired design, such as replacing the bot avatar or changing the background color of the footer.
+The chatbot provides a [**`styles`**](/api/styles) prop that provides you with the means to alter the appearance of your chatbot. Within `styles`, you can customize various components of your chatbot to fit your desired design, such as replacing the bot avatar or changing the background color of the footer.
 
 Similar to the `settings` prop, the `styles` prop is an object that contains `sections` (which in turn contains **React CSS Properties**) and they may be passed to the `ChatBot` in the form of `section: {property: value}` as shown in the examples below:
 
@@ -19,7 +19,7 @@ Similar to the `settings` prop, the `styles` prop is an object that contains `se
 
 :::tip Tip
 
-If any of the explanations or usages are unclear to you, you may always reference the [**default styles**](/docs/api/styles) for an example.
+If any of the explanations or usages are unclear to you, you may always reference the [**default styles**](/api/styles) for an example.
 
 :::
 
@@ -37,9 +37,9 @@ Within `styles`, you will find different **sections** corresponding to different
 - **audioButtonDisabledStyle**: Styles for the disabled audio button.
 - **tooltipStyle**: Styles for the chatbot tooltip.
 
-For the full list of available sections, you may refer to the [**API documentation**](/docs/api/styles#sections).
+For the full list of available sections, you may refer to the [**API documentation**](/api/styles#sections).
 
-Each section receives **React CSS Properties** that allow you to style your chatbot, and they are extensively documented in the [**API documentation for styles**](/docs/api/styles). Below is an example demonstrating how you may style various aspects of the chatbot. Experiment with it!
+Each section receives **React CSS Properties** that allow you to style your chatbot, and they are extensively documented in the [**API documentation for styles**](/api/styles). Below is an example demonstrating how you may style various aspects of the chatbot. Experiment with it!
 
 ```jsx live noInline title=MyComponent.js
 const MyComponent = () => {

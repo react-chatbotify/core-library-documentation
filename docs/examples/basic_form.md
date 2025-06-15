@@ -7,7 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Basic Form
 
-The following example is a basic recruitment form for a pet store. Note that there are no validations performed for the user input. If you wish to look at an example with validation, you may look at the [**Advanced Form**](/docs/examples/complex_form).
+The following example is a basic recruitment form for a pet store. Note that there are no validations performed for the user input. If you wish to look at an example with validation, you may look at the [**Advanced Form**](/examples/complex_form).
 
 ```jsx live noInline title=MyChatBot.js
 const MyChatBot = () => {

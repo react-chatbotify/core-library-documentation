@@ -11,7 +11,7 @@ The following is an example showing how you may allow markup syntax (e.g. `<br/>
 
 :::tip
 
-If you're looking to render markdown messages, you may refer to the [**markdown render example**](/docs/examples/markdown_render.md) instead.
+If you're looking to render markdown messages, you may refer to the [**markdown render example**](/examples/markdown_render.md) instead.
 
 :::
 

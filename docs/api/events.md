@@ -9,10 +9,10 @@ keywords: [react, chat, chatbot, chatbotify]
 
 This page documents all available `events` emitted by the chatbot that may be listened on. Note that events are an **opt-in feature** (i.e. it is disabled by default), as they should not be required for a vast majority of users. Events should be enabled for the following reasons:
 - You wish to execute certain application logic on specific chatbot events (e.g. log messages from chatbot)
-- You are using [**plugins**](/docs/concepts/plugins) that relies on events emitted by the chatbot (you should refer to the plugin documentation for what events are needed)
+- You are using [**plugins**](/concepts/plugins) that relies on events emitted by the chatbot (you should refer to the plugin documentation for what events are needed)
 
 :::tip Tip
-Before adding your own listeners with custom logic for events, it may be helpful to lookup existing [**plugins**](/docs/concepts/plugins) in case there's already a solution out there (e.g. [**input-validator**](https://github.com/react-chatbotify-plugins/input-validator) plugin).
+Before adding your own listeners with custom logic for events, it may be helpful to lookup existing [**plugins**](/concepts/plugins) in case there's already a solution out there (e.g. [**input-validator**](https://github.com/react-chatbotify-plugins/input-validator) plugin).
 :::
 
 ## Overview
@@ -58,7 +58,7 @@ Events emitted by the chatbot provide the following **details** accessible via `
 
 In addition, chatbot events are also initialized with **an empty promises array**, accessible via `event.promises`. This caters for use cases where event handlers are **async and require promises to be resolved before proceeding** with the chatbot logic. Push promises into `event.promises` to preserve the chatbot flow logic.
 
-Lastly, all events also contain **event-specific data** that are accessible via `event.data`. You may manipulate the data directly which will be reflected in the result of the event (e.g. modifying the content of a `RcbPreMessageInjectEvent` will modify the message sent). For an example on how to use events, you may take a look at the [**custom events**](/docs/examples/custom_events) example.
+Lastly, all events also contain **event-specific data** that are accessible via `event.data`. You may manipulate the data directly which will be reflected in the result of the event (e.g. modifying the content of a `RcbPreMessageInjectEvent` will modify the message sent). For an example on how to use events, you may take a look at the [**custom events**](/examples/custom_events) example.
 
 Below is a detailed description of each event and how to use them.
 
