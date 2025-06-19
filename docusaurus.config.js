@@ -58,6 +58,9 @@ const config = {
       metadata: [
         {name: 'keywords', content: 'react, chatbot, chat, chatbotify, conversational-chatbot'}
       ],
+      colorMode: {
+        defaultMode: 'dark',
+      },
       navbar: {
         title: 'React ChatBotify',
         logo: {
