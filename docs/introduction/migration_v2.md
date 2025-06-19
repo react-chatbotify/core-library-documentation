@@ -8,7 +8,7 @@ keywords: [react, chat, chatbot, chatbotify]
 # Migration to v2
 
 ## Foreword
-The **v2** release of React ChatBotify is now stable! You are strongly encouraged to migrate from [**v1**](https://react-chatbotify/docs/v1) as soon as possible. This update includes significant internal rewrites and changes that bring about a bunch of improvements and powerful features which includes but is not limited to:
+The **v2** release of React ChatBotify is now stable! You are strongly encouraged to migrate from [**v1**](https://react-chatbotify.com/docs/v1) as soon as possible. This update includes significant internal rewrites and changes that bring about a bunch of improvements and powerful features which includes but is not limited to:
 - Plugins
 - Themes
 - LLM Integration
