@@ -158,6 +158,10 @@ const config = {
                 label: 'Twitter (X)',
                 href: 'https://x.com/reactchatbotify',
               },
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/watch?v=nRJ9lGMrV8g',
+              },
             ],
           },
         ],

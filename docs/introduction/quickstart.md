@@ -53,6 +53,6 @@ Alternatively, you may also experiment with the `primaryColor` and `secondaryCol
 
 :::info Info
 
-In the next few sections, we will go through a brief overview on React ChatBotify, cover important properties as well as explore conversations/configurations. It is recommended to sit through these sections without skipping them as they will help ease your use of the library and the understanding of this documentation 😊!
+In the next few sections, we will go through a brief overview on React ChatBotify, cover important properties as well as explore conversations/configurations. These materials are also available in the form of [**YouTube Tutorials**](https://www.youtube.com/watch?v=nRJ9lGMrV8g). It is recommended to sit through these contents without skipping them as they will help ease your use of the library and the understanding of this documentation 😊!
 
 :::

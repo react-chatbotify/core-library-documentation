@@ -22,6 +22,12 @@ const flow = {
 }
 ```
 
+:::tip Tip
+
+Check out the [**YouTube Tutorial**](https://www.youtube.com/watch?v=nRJ9lGMrV8g) explaining the conversation flow concept through stronger visuals and animations.
+
+:::
+
 In a conversation, there are 4 important properties to take note of and they are the **Flow** (conversation flow), **Block** (conversation block), **Attributes** and **Params**. Below,
 we observe how these properties interact with each other:
 
