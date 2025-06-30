@@ -7,18 +7,6 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Conversations
 
-<div style={{ display: "flex", justifyContent: "center", marginTop: 16 }}>
-  <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/nRJ9lGMrV8g"
-    title="React ChatBotify Conversation Tutorial"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  />
-</div>
-
 Conversations refer to the interactions between the bot and the user. Here's how a basic conversation may look like:
 
 ```jsx
@@ -37,6 +25,17 @@ const flow = {
 :::tip Tip
 
 Check out the [**YouTube Tutorial**](https://www.youtube.com/watch?v=nRJ9lGMrV8g) explaining the conversation flow concept through stronger visuals and animations.
+
+<div style={{ display: "flex", justifyContent: "center", marginTop: 16 }}>
+  <iframe
+    style={{width: "100%", maxWidth: "1080px", aspectRatio: "16/9"}}
+    src="https://www.youtube.com/embed/nRJ9lGMrV8g"
+    title="React ChatBotify Conversation Flow Concept"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
 
 :::
 
