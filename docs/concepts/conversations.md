@@ -26,6 +26,17 @@ const flow = {
 
 Check out the [**YouTube Tutorial**](https://www.youtube.com/watch?v=nRJ9lGMrV8g) explaining the conversation flow concept through stronger visuals and animations.
 
+<div style={{ display: "flex", justifyContent: "center", marginTop: 16 }}>
+  <iframe
+    style={{width: "100%", maxWidth: "1080px", aspectRatio: "16/9"}}
+    src="https://www.youtube.com/embed/nRJ9lGMrV8g"
+    title="React ChatBotify Conversation Flow Concept"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
+
 :::
 
 In a conversation, there are 4 important properties to take note of and they are the **Flow** (conversation flow), **Block** (conversation block), **Attributes** and **Params**. Below,
