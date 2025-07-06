@@ -7,73 +7,10 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Hooks
 
-This page documents all the available custom `hooks` provided by the library. These hooks allow you to interact (externally from your own components) with various parts of the chatbot, such as **toggling audio**, **handling messages**, and **controlling the chat window state**!
+This page documents all the available custom `hooks` provided by the library.
 
 :::tip Tip
 Hooks are only relevant if you intend to interact with the chatbot functionalities (e.g. toggle audio or chat window) from **outside the chatbot and within your own component**. If you have no such use case, you may skip hooks entirely!
-:::
-
-Note that in order to import and use these custom hooks within your components, you first need to import `ChatBotProvider` and nest your components as its children. We'll look at 2 scenarios below.
-
-
-**Scenario 1:** If you have no need for custom hooks, then you **do not need** to import `ChatBotProvider` and can simply use `ChatBot`. This is likely the scenario for a vast majority of users:
-
-```jsx title=MyComponent.js
-import ChatBot from "react-chatbotify";
-
-const MyComponent = () => {
-  return (
-    <ChatBot/> {/* no custom hooks needed */}
-  );
-};
-```
-
-**Scenario 2:** If you require custom hooks to interact with the chatbot (e.g. toggle audio) from within your own components, you need to import `ChatBotProvider` and ensure that your components that need the hooks are nested within it:
-
-```jsx title=MyComponent.js
-import ChatBot, { ChatBotProvider } from "react-chatbotify";
-
-const MyComponent = () => {
-  return (
-    <>
-      <MyNotNestedComponent> {/* unable to access custom hooks */}
-      <ChatBotProvider>
-        <MyNestedComponent> {/* able to access custom hooks (e.g. useAudio) */}
-        <ChatBot/>
-      </ChatBotProvider>
-    </>
-  );
-};
-```
-
-```jsx title=MyNestedComponent
-import { useAudio } from "react-chatbotify";
-
-const MyNestedComponent = () => {
-  // can use custom hook
-  const { toggleAudio } = useAudio();
-
-  return (
-    <button onClick={toggleAudio}></button>
-  )
-};
-
-const MyNotNestedComponent = () => {
-  // error, cannot use custom hook since outside of ChatBotProvider
-  const { toggleAudio } = useAudio();
-
-  return (
-    <button onClick={toggleAudio}></button>
-  )
-};
-```
-
-:::warning Warning
-It is a common mistake to import these custom hooks from a component outside of `<ChatBotProvider>`. If you're running into issues, make sure to check that your component is nested properly as a child of `<ChatBotProvider>`!
-:::
-
-:::tip Tip
-An extensive example featuring how various hooks may be used can be found [**here**](/examples/custom_hooks).
 :::
 
 ## Overview

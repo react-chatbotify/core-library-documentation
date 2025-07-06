@@ -7,9 +7,7 @@ keywords: [react, chat, chatbot, chatbotify]
 
 # Events
 
-This page documents all available `events` emitted by the chatbot that may be listened on. Note that events are an **opt-in feature** (i.e. it is disabled by default), as they should not be required for a vast majority of users. Events should be enabled for the following reasons:
-- You wish to execute certain application logic on specific chatbot events (e.g. log messages from chatbot)
-- You are using [**plugins**](/concepts/plugins) that relies on events emitted by the chatbot (you should refer to the plugin documentation for what events are needed)
+This page documents all available [`events`](/concepts/events) emitted by the chatbot that may be listened on.
 
 :::tip Tip
 Before adding your own listeners with custom logic for events, it may be helpful to lookup existing [**plugins**](/concepts/plugins) in case there's already a solution out there (e.g. [**input-validator**](https://github.com/react-chatbotify-plugins/input-validator) plugin).
