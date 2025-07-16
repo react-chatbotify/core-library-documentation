@@ -11,8 +11,15 @@ The following example is a slightly more complex recruitment form for a pet stor
 
 ```jsx live noInline title=MyChatBot.js
 const MyChatBot = () => {
-	const [form, setForm] = React.useState({});
+	const formRef = React.useRef({});
+
+	// simple helper to update form
+	const updateForm = (patch) => {
+		Object.assign(formRef.current, patch);
+	};
+
 	const formStyle = {
+		color: "black",
 		marginTop: 10,
 		marginLeft: 20,
 		border: "1px solid #491d8d",
@@ -24,12 +31,12 @@ const MyChatBot = () => {
 	const flow={
 		start: {
 			message: "Hello there! What is your name?",
-			function: (params) => setForm({...form, name: params.userInput}),
+			function: (params) => updateForm({ name: params.userInput }),
 			path: "ask_age"
 		},
 		ask_age: {
 			message: (params) => `Nice to meet you ${params.userInput}, what is your age?`,
-			function: (params) => setForm({...form, age: params.userInput}),
+			function: (params) => updateForm({ age: params.userInput }),
 			path: async (params) => {
 				if (isNaN(Number(params.userInput))) {
 					await params.injectMessage("Age needs to be a number!");
@@ -45,7 +52,7 @@ const MyChatBot = () => {
 			// options: {items: ["Yes", "No"], sendOutput: false}
 			options: ["Yes", "No"],
 			chatDisabled: true,
-			function: (params) => setForm({...form, pet_ownership: params.userInput}),
+			function: (params) => updateForm({ pet_ownership: params.userInput }),
 			path: "ask_choice"
 		},
 		ask_choice: {
@@ -55,12 +62,12 @@ const MyChatBot = () => {
 			// checkboxes: ["Dog", "Cat", "Rabbit", "Hamster", "Bird"]
 			checkboxes: {items: ["Dog", "Cat", "Rabbit", "Hamster", "Bird"], min: 2, max: 4},
 			chatDisabled: true,
-			function: (params) => setForm({...form, pet_choices: params.userInput}),
+			function: (params) => updateForm({ pet_choices: params.userInput }),
 			path: "ask_work_days"
 		},
 		ask_work_days: {
 			message: "How many days can you work per week?",
-			function: (params) => setForm({...form, num_work_days: params.userInput}),
+			function: (params) => updateForm({ num_work_days: params.userInput }),
 			path: async (params) => {
 				if (isNaN(Number(params.userInput))) {
 					await params.injectMessage("Number of work day(s) need to be a number!");
@@ -71,15 +78,18 @@ const MyChatBot = () => {
 		},
 		end: {
 			message: "Thank you for your interest, we will get back to you shortly!",
-			component: (
-				<div style={formStyle}>
-					<p>Name: {form.name}</p>
-					<p>Age: {form.age}</p>
-					<p>Pet Ownership: {form.pet_ownership}</p>
-					<p>Pet Choices: {form.pet_choices}</p>
-					<p>Num Work Days: {form.num_work_days}</p>
-				</div>
-			),
+			component: () => {
+				const form = formRef.current;
+				return (
+					<div style={formStyle}>
+						<p>Name: {form.name}</p>
+						<p>Age: {form.age}</p>
+						<p>Pet Ownership: {form.pet_ownership}</p>
+						<p>Pet Choices: {form.pet_choices}</p>
+						<p>Num Work Days: {form.num_work_days}</p>
+					</div>
+				);
+			},
 			options: ["New Application"],
 			chatDisabled: true,
 			path: "start"
