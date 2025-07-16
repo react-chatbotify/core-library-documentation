@@ -69,13 +69,13 @@ const MyChatBot = () => {
 			component: () => {
 				const form = formRef.current;
 				return (
-				<div style={formStyle}>
-					<p>Name: {form.name}</p>
-					<p>Age: {form.age}</p>
-					<p>Pet Ownership: {form.pet_ownership}</p>
-					<p>Pet Choices: {form.pet_choices}</p>
-					<p>Num Work Days: {form.num_work_days}</p>
-				</div>
+					<div style={formStyle}>
+						<p>Name: {form.name}</p>
+						<p>Age: {form.age}</p>
+						<p>Pet Ownership: {form.pet_ownership}</p>
+						<p>Pet Choices: {form.pet_choices}</p>
+						<p>Num Work Days: {form.num_work_days}</p>
+					</div>
 				);
 			},
 			options: ["New Application"],
