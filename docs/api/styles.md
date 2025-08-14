@@ -41,6 +41,7 @@ export const DefaultStyles: Styles = {
 	loadingSpinnerStyle: {},
 	mediaDisplayContainerStyle: {},
 	chatButtonStyle: {},
+	chatButtonHoveredStyle: {},
 	chatHistoryButtonStyle: {},
 	chatHistoryButtonHoveredStyle: {},
 	sendButtonStyle: {},
@@ -104,6 +105,7 @@ If you wish to refine the appearance of the chatbot, these are the list of secti
 | characterLimitStyle               | `object`                          | {}      | Styles for the character limit display.                                                                                       |
 | characterLimitReachedStyle        | `object`                          | {}      | Styles for the character limit display when limit is reached.                                                                 |
 | chatButtonStyle                   | `object`                          | {}      | Styles for the chatbot button.                                                                                                |
+| chatButtonHoveredStyle            | `object`                          | {}      | Styles for the hovered chatbot button.                                                                                                |
 | chatHistoryButtonHoveredStyle     | `object`                          | {}      | Styles for the hovered chat history button.                                                                                   |
 | chatHistoryButtonStyle            | `object`                          | {}      | Styles for the chat history button.                                                                                           |
 | chatHistoryLineBreakStyle         | `object`                          | {}      | Styles for the chat history line break.                                                                                       |

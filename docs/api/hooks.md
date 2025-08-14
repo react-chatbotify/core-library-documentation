@@ -216,7 +216,7 @@ The `useMessages` hook allows you to track and manage the chatbot's messages.
 | endStreamMessage      | `async function` | Refer [here](/api/params#endstreammessage)             | A utility function used to indicate the end of an existing message stream, identical to `params.endMessageStream`.                                   |
 | removeMessage         | `async function` | Refer [here](/api/params#removemessage)                | A utility function used to remove a message from the chat, identical to `params.removeMessage`.                                                      |
 | messages            | `Array<Message>`     | -        |Array containing all messages currently shown in the chatbot.                  |
-| replaceMessages       | `function`  | **newMessages (required)** - `Message[]` to replace chat with | Directly replaces the current messages with provided messages.  |
+| replaceMessages       | `function`  | **newMessagesOrUpdater (required)** - Either: (1) `Message[]` to replace chat with, or (2) a callback `(prevMessages: Message[]) => Message[]` returning the new messages. | Directly replaces the current messages with provided messages, or computes them from the previous state. |
 
 #### Code Example
 ```jsx
@@ -298,8 +298,7 @@ The `usePaths` hook allows you to track and manage the chatbot's paths.
 | getPrevPath  | `function`       | -         | Retrieves the previous path of the user.                                                                    |
 | goToPath     | `function`       | Refer [here](/api/params#gotopath) | Sends the user to a specified path, identical to `params.goToPath`.                        |
 | paths        | `Array<string>`  | -         | Array containing all paths the user has taken in order.                                                     |
-| replacePaths | `function`       | **newPaths (required)** - `string[]` containing paths to replace with | Directly replaces the current paths with provided paths (hardly a reason to do this, think twice).          |
-
+| replacePaths | `function` | **newPathsOrUpdater (required)** – Either: (1) `string[]` containing paths to replace with, or (2) a callback `(prevPaths: string[]) => string[]` returning the new paths. | Directly replaces the current paths with provided paths, or computes them from the previous state (hardly a reason to do this, think twice). |
 
 #### Code Example
 ```jsx
@@ -329,7 +328,7 @@ The `useSettings` hook allows you to track and manage the chatbot's settings.
 | Name            | Type        | Parameter | Description                                                                  |
 |-----------------|-------------|-----------|------------------------------------------------------------------------------|
 | settings        | `Settings`  | -         | Represents the current settings of the chatbot.                             |
-| replaceSettings | `function`  | **newSettings (required)** - `Settings` to replace with | Directly replaces the current settings with provided settings.              |
+| replaceSettings | `function` | **newSettingsOrUpdater (required)** – Either: (1) `Settings` to replace with, or (2) a callback `(prevSettings: Settings) => Settings` returning the new settings. | Directly replaces the current settings with provided settings, or computes them from the previous state. |
 | updateSettings  | `function`  | **fields (required)** - `Settings` fields to update | Modifies and merges the provided settings with existing settings.           |
 
 #### Code Example
@@ -362,7 +361,7 @@ The `useStyles` hook allows you to track and manage the chatbot's styles.
 | Name          | Type       | Parameter | Description                                                              |
 |---------------|------------|-----------|--------------------------------------------------------------------------|
 | styles        | `Styles`   | -         | Represents the current styles of the chatbot.                            |
-| replaceStyles | `function` | **newStyles (required)** - `Styles` to replace with | Directly replaces the current styles with provided styles.               |
+| replaceStyles | `function` | **newStylesOrUpdater (required)** – Either: (1) `Styles` to replace with, or (2) a callback `(prevStyles: Styles) => Styles` returning the new styles. | Directly replaces the current styles with provided styles, or computes them from the previous state. |
 | updateStyles  | `function` | **fields (required)** - `Styles` fields to update | Modifies and merges the provided styles with existing styles.            |
 
 #### Code Example
@@ -431,7 +430,7 @@ The `useToasts` hook allows you to track and manage the chatbot's toasts.
 | showToast     | `async function` | Refer [here](/api/params#showtoast)              | Shows a toast in chat, identical to `params.showToast`.                                       |
 | dismissToast  | `async function` | Refer [here](/api/params#dismisstoast)           | Dismisses a toast from chat, identical to `params.dismissToast`.                              |
 | toasts        | `Array<Toast>`   | -                                                      | Array containing all toasts currently shown in the chatbot.                                   |
-| replaceToasts | `function`       | **newToasts (required)** - `Toast[]` to replace with                                                      | Directly replaces the current toasts with provided toasts.                                    |
+| replaceToasts | `function` | **newToastsOrUpdater (required)** – Either: (1) `Toast[]` to replace with, or (2) a callback `(prevToasts: Toast[]) => Toast[]` returning the new toasts. | Directly replaces the current toasts with provided toasts, or computes them from the previous state. |
 
 #### Code Example
 ```jsx
