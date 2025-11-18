@@ -22,6 +22,7 @@ Below is a list of available events with a brief description for each one. You c
 | RcbChangePathEvent                  | Emitted when the chatbot changes its conversation path.           |
 | RcbChunkStreamMessageEvent          | Emitted when a chunk of a streamed message is received.           |
 | RcbDismissToastEvent                | Emitted when a toast message is dismissed.                        |
+| RcbSaveChatHistoryEvent             | Emitted when chat messages are saved to history.                  |
 | RcbLoadChatHistoryEvent             | Emitted when the chat history is loaded.                          |
 | RcbPostInjectMessageEvent           | Emitted after a message is injected into the chat.                |
 | RcbPreInjectMessageEvent            | Emitted before a message is injected into the chat.               |
@@ -166,6 +167,43 @@ const MyComponent = () => {
     window.addEventListener("rcb-dismiss-toast", handleDismissToast);
     return () => {
       window.removeEventListener("rcb-dismiss-toast", handleDismissToast);
+    };
+  }, []);
+
+  return (
+    <ExampleComponent/>
+  );
+};
+```
+
+### RcbSaveChatHistoryEvent
+
+#### Description
+Emitted when chat messages are saved to history.
+
+#### Note
+- Requires `settings.event.rcbSaveChatHistory` to be set to true.
+- Event is **preventable** with `event.preventDefault()`.
+
+#### Data
+| Name      | Type         | Description                                                     |
+|-----------|--------------|-----------------------------------------------------------------|
+| messages  | `Message[]`  | The chat messages being saved to history.                       |
+
+#### Code Example
+```jsx
+import { useEffect } from "react";
+import { RcbSaveChatHistoryEvent } from "react-chatbotify";
+
+const MyComponent = () => {
+  useEffect(() => {
+    const handleSaveChatHistory = (event: RcbSaveChatHistoryEvent) => {
+      // handle the save chat history event
+    };
+
+    window.addEventListener("rcb-save-chat-history", handleSaveChatHistory);
+    return () => {
+      window.removeEventListener("rcb-save-chat-history", handleSaveChatHistory);
     };
   }, []);
 

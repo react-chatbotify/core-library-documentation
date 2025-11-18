@@ -183,6 +183,7 @@ const DefaultSettings: Settings = {
 		rcbChunkStreamMessage: false,
 		rcbStopStreamMessage: false,
 		rcbRemoveMessage: false,
+		rcbSaveChatHistory: false,
 		rcbLoadChatHistory: false,
 		rcbToggleChatWindow: false,
 		rcbToggleAudio: false,
@@ -384,6 +385,7 @@ Properties here handle the events emitted by the chatbot. All events have a defa
 | RcbChangePath             | `boolean`  | false   | Specifies whether the `RcbChangePathEvent` will be emitted.                 |
 | RcbChunkStreamMessage     | `boolean`  | false   | Specifies whether the `RcbChunkStreamMessageEvent` will be emitted.         |
 | RcbDismissToast           | `boolean`  | false   | Specifies whether the `RcbDismissToastEvent` will be emitted.               |
+| RcbSaveChatHistory        | `boolean`  | false   | Specifies whether the `RcbSaveChatHistoryEvent` will be emitted.            |
 | RcbLoadChatHistory        | `boolean`  | false   | Specifies whether the `RcbLoadChatHistoryEvent` will be emitted.            |
 | RcbPostInjectMessage      | `boolean`  | false   | Specifies whether the `RcbPostInjectMessageEvent` will be emitted.          |
 | RcbPreInjectMessage       | `boolean`  | false   | Specifies whether the `RcbPreInjectMessageEvent` will be emitted.           |
